@@ -23,7 +23,7 @@ switch()
     return
   fi
 
-  nixos-rebuild --target-host samiarda@$hostname switch
+  nixos-rebuild --flake .#$hostname --target-host samiarda@$hostname switch
 }
 
 provision()
