@@ -1,0 +1,64 @@
+input() {
+    prompt=$1
+    input=""
+    read -p "$prompt" input
+    echo "$input"
+}
+
+###
+
+switch()
+{
+  hostname=$1
+
+  # if hostname isn't provided, then return
+  if [ -z "$hostname" ]; then
+    echo "please provide the ssh hostname."
+    return
+  fi
+
+  # if no server configuration exists, then return
+  if [ ! -d "./server/$hostname" ]; then
+    echo "no configuration found for $hostname."
+    return
+  fi
+
+  nixos-rebuild --target-host samiarda@$hostname switch
+}
+
+provision()
+{
+  # ask for configuration hostname, if not provided, then return
+  hostname=$(input "please provide the ssh hostname: ")
+  if [ -z "$hostname" ]; then
+    echo "please provide the ssh hostname."
+    return
+  fi
+
+  # ask for ip, if not provided, then return
+  ip=$(input "please provide the ssh ip: ")
+  if [ -z "$ip" ]; then
+    echo "please provide the ssh ip."
+    return
+  fi
+  nix run github:nix-community/nixos-anywhere -- --flake .#$hostname --target-host nixos@$ip
+}
+
+key()
+{
+    hostname=$(input "please provide the ssh hostname: ")
+    sn=$(input "please provide the yubikey serial number: ")
+    keylabel=$(input "please provide the yubikey key label: ")
+    ssh-keygen -t ed25519-sk -O resident -O verify-required -O application=ssh:$application -C "$application-$(date +'%d/%m/%Y')-$sn ($keylabel)" -f ./secrets/$hostname-$keylabel -N ""
+}
+
+if [ $# -eq 0 ]; then
+  switch $1
+else
+    case $1 in
+        key) key ;;
+        code) code . ;;
+        cd) exit ;;
+        *) echo "unknown function. please review the syntax!" ;;
+    esac
+fi
