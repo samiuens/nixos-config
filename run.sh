@@ -54,8 +54,11 @@ key()
     sn=$(input "please provide the yubikey serial number: ")
     keylabel=$(input "please provide the yubikey key label: ")
     ssh-keygen -t ed25519-sk -O resident -O verify-required -O application=ssh:$application -C "$application-$(date +'%d/%m/%Y')-$sn ($keylabel)" -f ./secrets/$hostname-$keylabel -N ""
-    cp ./secrets/$hostname-$keylabel ~/.ssh/$hostname-$keylabel
-    cp ./secrets/$hostname-$keylabel.pub ~/.ssh/$hostname-$keylabel.pub
+    copy=$(input "copy the key to local machine? (y/n): ")
+    if [ "$copy" = "y" ]; then
+      cp ./secrets/$hostname-$keylabel ~/.ssh/$hostname-$keylabel
+      cp ./secrets/$hostname-$keylabel.pub ~/.ssh/$hostname-$keylabel.pub
+    fi
 }
 
 if [ $# -eq 0 ]; then
