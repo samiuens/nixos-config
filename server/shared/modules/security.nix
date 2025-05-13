@@ -10,4 +10,5 @@
       ];
     }
   ];
+  networking.firewall.enable = true;
 }
