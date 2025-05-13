@@ -11,9 +11,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, disko }: 
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix }: 
   let
     baseDomain = "samiarda.com";
   in {
