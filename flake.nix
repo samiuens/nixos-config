@@ -13,12 +13,15 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, disko }: {
+  outputs = inputs@{ self, nixpkgs, disko }: 
+  let
+    baseDomain = "samiarda.com";
+  in {
     nixosConfigurations = {
       "srv-prod-1" = nixpkgs.lib.nixosSystem {
         specialArgs =
           {
-            inherit inputs;
+            inherit inputs baseDomain;
             hostname = "srv-prod-1";
             username = "samiarda";
             platform = "x86_64-linux";
