@@ -1,3 +1,5 @@
+YUBIKEY_COUNT=2
+
 input() {
     prompt=$1
     input=""
@@ -28,6 +30,11 @@ switch()
 
 provision()
 {
+  # generate ssh keys
+  for i in $(seq 1 $YUBIKEY_COUNT); do
+    key
+  done
+
   # ask for configuration hostname, if not provided, then return
   hostname=$(input "please provide the ssh hostname: ")
   if [ -z "$hostname" ]; then
@@ -59,6 +66,8 @@ key()
       cp ./secrets/$hostname-$keylabel ~/.ssh/$hostname-$keylabel
       cp ./secrets/$hostname-$keylabel.pub ~/.ssh/$hostname-$keylabel.pub
     fi
+    rm ./secrets/$hostname-$keylabel
+    clear
 }
 
 if [ $# -eq 0 ]; then
