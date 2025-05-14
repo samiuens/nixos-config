@@ -1,4 +1,5 @@
 { username, ... }: {
+  security.sudo.enable = true;
   security.sudo.extraRules = [
     { 
       users = [ "${username}" ];
