@@ -7,6 +7,7 @@
       ./modules/security.nix
       ./modules/sops.nix
       ./modules/ssh.nix
+      ./modules/nix.nix
       ./modules/time.nix
       ./modules/users.nix
     ];
