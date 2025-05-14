@@ -5,8 +5,8 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     openssh.authorizedKeys.keyFiles = [
-      "../../../secrets/${hostname}-keychain.pub"
-      "../../../secrets/${hostname}-backup.pub"
+      "../../../secrets/public/${hostname}-keychain.pub"
+      "../../../secrets/public/${hostname}-backup.pub"
     ];
   };
 }
