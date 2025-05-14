@@ -71,14 +71,29 @@ key()
     clear
 }
 
+secrets()
+{
+  hostname=$(input "please provide the ssh hostname: ")
+  sops ./secrets/public/$hostname.yaml
+}
+
+updatekeys()
+{
+  hostname=$(input "please provide the ssh hostname: ")
+  sops updatekeys ./secrets/public/$hostname.yaml
+}
+
 if [ $# -eq 0 ]; then
   switch
 else
     case $1 in
         provision) provision ;;
         key) key ;;
+        secrets) secrets ;;
+        updatekeys) updatekeys ;;
         code) code . ;;
+        cursor) cursor . ;;
         cd) exit ;;
-        *) echo "unknown function. please review the syntax!" ;;
+        *) echo "provision, key, secrets, updatekeys" ;;
     esac
 fi
