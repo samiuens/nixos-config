@@ -30,8 +30,10 @@ switch()
 
 provision()
 {
+  hostname=$(input "please provide the ssh hostname: ")
+
   # generate ssh keys if not found
-  if [ ! -f "./secrets/$hostname" ]; then
+  if [ ! -f "./secrets/public/$hostname-keychain.pub" ]; then
     echo "no key file found for $hostname."
     for i in $(seq 1 $YUBIKEY_COUNT); do
       key
@@ -39,7 +41,6 @@ provision()
   fi
 
   # ask for configuration hostname, if not provided, then return
-  hostname=$(input "please provide the ssh hostname: ")
   if [ -z "$hostname" ]; then
     echo "please provide the ssh hostname."
     return
@@ -51,7 +52,7 @@ provision()
     echo "please provide the ssh ip."
     return
   fi
-  nix run github:nix-community/nixos-anywhere -- --flake .#$hostname --target-host nixos@$ip
+  nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./server/$hostname/hardware-configuration.nix --flake .#$hostname --target-host nixos@$ip
 }
 
 key()
@@ -74,6 +75,7 @@ if [ $# -eq 0 ]; then
   switch $1
 else
     case $1 in
+        provision) provision ;;
         key) key ;;
         code) code . ;;
         cd) exit ;;
