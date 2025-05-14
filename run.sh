@@ -52,7 +52,7 @@ provision()
     echo "please provide the ssh ip."
     return
   fi
-  nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./server/$hostname/hardware-configuration.nix --flake .#$hostname --build-on remote --target-host nixos@$ip
+  nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./server/$hostname/hardware-configuration.nix --flake .#$hostname --build-on remote --target-host root@$ip
 }
 
 key()
