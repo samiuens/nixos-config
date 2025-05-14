@@ -63,10 +63,10 @@ key()
     copy=$(input "copy the key to local machine? (y/n): ")
     if [ "$copy" = "y" ]; then
       cp ./secrets/private/$hostname-$keylabel ~/.ssh/$hostname-$keylabel
-      mv ./secrets/private/$hostname-$keylabel.pub ./secrets/public/$hostname-$keylabel.pub
       cp ./secrets/public/$hostname-$keylabel.pub ~/.ssh/$hostname-$keylabel.pub
     fi
-    rm ./secrets/private/$hostname-$keylabel
+    mv ./secrets/private/$hostname-$keylabel.pub ./secrets/public/$hostname-$keylabel.pub
+    #rm ./secrets/private/$hostname-$keylabel
     clear
 }
 
