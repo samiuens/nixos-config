@@ -1,7 +1,7 @@
 { username, ... }: {
   security.sudo.extraRules = [
     { 
-      users = [ ${username} ];
+      users = [ "${username}" ];
       commands = [
         { 
           command = "ALL" ;

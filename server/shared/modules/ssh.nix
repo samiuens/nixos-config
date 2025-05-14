@@ -4,7 +4,7 @@
     openFirewall = true;
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = [ ${username} ];
+      AllowUsers = [ "${username}" ];
       PubkeyAuthentication = true;
       PermitRootLogin = "no";
     };
