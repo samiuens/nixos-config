@@ -3,9 +3,10 @@ keys:
   - &samiarda
     - &keychain 00209B52F8A651F4CAD8385C419C4F9E21E8F900
     - &backup  E95FDF6DDC6967B7B317F23DE92236CA94126BC6
+  # Converted ssh host keys
   - &hosts
-    #- &host age123abc456
-    - &srv-prod-1 age1rnla47cacaz9zcvaqtz7y7t58wjfrr2a9mzfsplsfm9rpw75mexsv4was9
+    # nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+    - &srv-prod-1 age103zyxp0qku4dyqslmgx370jv8yttc6wzhfhlfyd3mq7369cgje6stplz5u
 creation_rules:
   - path_regex: secrets/public/shared.ya?ml$
     key_groups:
