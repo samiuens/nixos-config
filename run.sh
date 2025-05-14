@@ -11,7 +11,7 @@ input() {
 
 switch()
 {
-  hostname=$1
+  hostname=$(input "please provide the hostname: ")
 
   # if hostname isn't provided, then return
   if [ -z "$hostname" ]; then
@@ -25,7 +25,7 @@ switch()
     return
   fi
 
-  nixos-rebuild --flake .#$hostname --build-host samiarda@$hostname --target-host samiarda@$hostname switch
+  nixos-rebuild --flake .#$hostname --build-host samiarda@$hostname --target-host samiarda@$hostname --use-remote-sudo --fast switch
 }
 
 provision()
@@ -52,7 +52,7 @@ provision()
     echo "please provide the ssh ip."
     return
   fi
-  nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./server/$hostname/hardware-configuration.nix --flake .#$hostname --build-on-remote --target-host nixos@$ip
+  nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./server/$hostname/hardware-configuration.nix --flake .#$hostname --build-on remote --target-host nixos@$ip
 }
 
 key()
@@ -72,7 +72,7 @@ key()
 }
 
 if [ $# -eq 0 ]; then
-  switch $1
+  switch
 else
     case $1 in
         provision) provision ;;
