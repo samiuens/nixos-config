@@ -1,7 +1,7 @@
 { hostname, ... }:
 
 let
-  services = [ "" ];
+  services = [];
 in
 {
   imports = [
