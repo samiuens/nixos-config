@@ -10,5 +10,5 @@ in
   ] ++ builtins.map (serviceName: ../../services/${serviceName}.nix) services;
   #] ++ builtins.map (serviceName: ../../services/${serviceName}.nix { inherit hostname; }) services;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "24.11";
 }
