@@ -9,9 +9,11 @@ keys:
 creation_rules:
   - path_regex: secrets/public/shared.ya?ml$
     key_groups:
-      - pgp:
-        - *keychain
-        - *backup
+      - age:
+          - *srv-prod-1
+        pgp:
+          - *keychain
+          - *backup
   - path_regex: secrets/public/srv-prod-1.ya?ml$
     key_groups:
       - age:
