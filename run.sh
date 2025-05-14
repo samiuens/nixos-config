@@ -30,19 +30,18 @@ switch()
 
 provision()
 {
-  # generate ssh keys
-  for i in $(seq 1 $YUBIKEY_COUNT); do
-    key
-  done
+  # generate ssh keys if not found
+  if [ ! -f "./secrets/$hostname" ]; then
+    echo "no key file found for $hostname."
+    for i in $(seq 1 $YUBIKEY_COUNT); do
+      key
+    done
+  fi
 
   # ask for configuration hostname, if not provided, then return
   hostname=$(input "please provide the ssh hostname: ")
   if [ -z "$hostname" ]; then
     echo "please provide the ssh hostname."
-    return
-  fi
-  if [ ! -f "./secrets/$hostname" ]; then
-    echo "no key file found for $hostname."
     return
   fi
 
