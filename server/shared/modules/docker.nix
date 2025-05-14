@@ -11,7 +11,7 @@
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = "${pkgs.docker}/bin/docker network create --driver bridge ${hostname}";
-      #ExecStop = "${pkgs.docker}/bin/docker network rm ${hostname}";
+      ExecStop = "${pkgs.docker}/bin/docker network rm ${hostname}";
     };
   };
 }
