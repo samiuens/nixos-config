@@ -1,3 +1,2 @@
 secrets/private
 flake.lock
-.sops.yaml

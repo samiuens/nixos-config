@@ -1,0 +1,13 @@
+keys:
+  # Personal yubikeys
+  - &samiarda
+    - &keychain 00209B52F8A651F4CAD8385C419C4F9E21E8F900
+    - &backup  E95FDF6DDC6967B7B317F23DE92236CA94126BC6
+  - &hosts
+    #- &host age123abc456
+creation_rules:
+  - path_regex: secrets/public/shared.ya?ml$
+    key_groups:
+      - pgp:
+        - *keychain
+        - *backup
