@@ -11,5 +11,4 @@
       ];
     }
   ];
-  networking.firewall.enable = true;
 }
