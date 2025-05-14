@@ -1,4 +1,4 @@
-{ hostname, ... }: {
+{ hostname, pkgs, ... }: {
   virtualisation.docker.enable = true;
 
   # Create docker network
