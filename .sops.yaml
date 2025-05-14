@@ -11,3 +11,8 @@ creation_rules:
       - pgp:
         - *keychain
         - *backup
+  - path_regex: secrets/public/srv-prod-1.ya?ml$
+    key_groups:
+      - pgp:
+        - *keychain
+        - *backup
