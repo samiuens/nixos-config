@@ -18,12 +18,12 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
   # file:
-  #   filename: /config.yml
+  #   filename: /etc/traefik/config.yml
 certificatesResolvers:
   cloudflare:
     acme:
       email: admin@system.samiarda.com
-      storage: acme.json
+      storage: /etc/traefik/acme.json
       # caServer: https://acme-v02.api.letsencrypt.org/directory # prod (default)
       caServer: https://acme-staging-v02.api.letsencrypt.org/directory # staging
       dnsChallenge:
