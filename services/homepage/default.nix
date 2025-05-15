@@ -16,7 +16,6 @@
     # Define the container
     virtualisation.oci-containers.containers."${name}" = {
       image = "${image}";
-      ports = [ "80:80" "443:443" ];
       volumes = [
         "${homepageSettings}:/app/config/settings.yaml"
         "/var/run/docker.sock:/var/run/docker.sock:ro"
@@ -29,6 +28,7 @@
         "traefik.http.routers.${name}.rule" = "Host(`${domain}`)";
         "traefik.http.routers.${name}.entrypoints" = "https";
         "traefik.http.routers.${name}.tls" = "true";
+        "traefik.http.services.${name}.loadbalancer.server.port" = "3000";
       };
       extraOptions = [ "--network=${hostname}" ];
     };
