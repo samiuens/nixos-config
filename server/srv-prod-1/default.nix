@@ -1,7 +1,7 @@
 { hostname, ... }:
 
 let
-  services = [ "traefik"];
+  services = [ "traefik" ];
 in
 {
   imports = [
