@@ -7,7 +7,7 @@
     services.${name} = {
       enable = true;
       # Using the netdata package with cloud ui enabled
-      package = pkgs.netdata.override { withCloud = true; };
+      package = pkgs.netdata.override { withCloudUi = true; };
       config.global = {
         "memory mode" = "ram";
         "debug log" = "none";
