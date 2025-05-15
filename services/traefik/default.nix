@@ -10,8 +10,8 @@
       text = builtins.readFile ./traefik.yaml;
     };
   in {
-    # Allow DNS (53), HTTP (80), HTTPS (443), and Traefik Dashboard (8080)
-    networking.firewall.allowedTCPPorts = [ 53 80 443 8080 ];
+    # Allow DNS (53), HTTP (80) and HTTPS (443)
+    networking.firewall.allowedTCPPorts = [ 53 80 443 ];
 
     # Defining secrets
     sops.secrets = { 
@@ -24,7 +24,7 @@
     # Define the container
     virtualisation.oci-containers.containers."${name}" = {
       image = "${image}";
-      ports = [ "80:80" "443:443" "8080:8080" ];
+      ports = [ "80:80" "443:443" ];
       volumes = [
         "/var/run/docker.sock:/var/run/docker.sock:ro"
         "${traefikConfig}:/etc/traefik/traefik.yaml:ro"
@@ -36,7 +36,7 @@
         "traefik.enable" = "true";
         "traefik.http.routers.traefik.entrypoints" = "http";
         "traefik.http.routers.traefik.rule" = "Host(`${domain}`)";
-        #"traefik.http.middlewares.traefik-auth.basicauth.users" = "${config.sops.secrets.traefik_dashboard_credentials.path}";
+        #"traefik.http.middlewares.traefik-auth.basicauth.users" = "";
         "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme" = "https";
         "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto" = "https";
         "traefik.http.routers.traefik.middlewares" = "traefik-https-redirect";
