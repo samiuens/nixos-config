@@ -22,7 +22,7 @@
         "/var/run/docker.sock:/var/run/docker.sock:ro"
       ];
       environment = {
-        HOMEPAGE_ALLOWED_HOSTS = "${domain}";
+        #HOMEPAGE_ALLOWED_HOSTS = "${domain}";
       };
       labels = {
         "traefik.enable" = "true";
