@@ -1,7 +1,7 @@
 { hostname, ... }:
 
 let
-  services = [ "traefik" ];
+  services = [ "netdata" "traefik" ];
 in
 {
   imports = [
