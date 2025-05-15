@@ -16,7 +16,6 @@
   };
   nixpkgs = {
     config.allowUnfree = true;
-    config.allowBroken = true;
     hostPlatform = lib.mkDefault "${platform}";
   };
 }
