@@ -1,14 +1,19 @@
-{ hostname, ... }: 
+{ config, pkgs, ... }: 
   let name = "netdata";
   in {
-    # Allow Netdata (19999)
-    networking.firewall.allowedTCPPorts = [ 19999 ];
     # Defining secrets
-    sops.secrets.netdata_claim_token = {};
+    sops.secrets."netdata/claim-token" = {};
     # Defining service
     services.${name} = {
       enable = true;
-      port = 19999;
-      claimTokenFile = "${config.sops.secrets.netdata_claim_token.path}";
+      # Using the netdata package with cloud ui enabled
+      package = pkgs.netdata.override { withCloud = true; };
+      config.global = {
+        "memory mode" = "ram";
+        "debug log" = "none";
+        "access log" = "none";
+        "error log" = "syslog";
+      };
+      claimTokenFile = config.sops.secrets."netdata/claim-token".path;
     };
-  };
+  }
