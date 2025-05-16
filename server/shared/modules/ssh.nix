@@ -31,7 +31,7 @@
     # Defines a filter that detects SSH brute force attacks
     "fail2ban/filter.d/ssh-key.local".text = pkgs.lib.mkDefault (pkgs.lib.mkAfter ''
       [Definition]
-      failregex = sshd(?:\[\d+\])?: Connection closed by <HOST> .*preauth.*\s*$
+      failregex = ^%(__prefix_line)sConnection closed by <HOST> \[preauth\]$
     '');
   };
 }
