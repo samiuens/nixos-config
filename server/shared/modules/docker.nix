@@ -1,11 +1,12 @@
 { hostname, pkgs, ... }: {
   virtualisation.docker.enable = true;
 
-  # Create docker network
+  # Create docker network if it doesn't exist
   systemd.services."docker-${hostname}_network" = {
-    description = "Erstelle das Docker-Netzwerk für ${hostname}.";
+    description = "Create docker network for ${hostname}.";
     after = [ "docker.service" ];
     wantedBy = [ "multi-user.target" ];
+    conditionPathExists = "!/var/run/docker/netns/${hostname}";
 
     serviceConfig = {
       Type = "oneshot";
