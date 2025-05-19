@@ -25,7 +25,7 @@
       specialArgs = 
         {
           inherit inputs vars;
-          hostname = name
+          hostname = name;
           username = "samiarda";
           platform = "x86_64-linux";
         };
