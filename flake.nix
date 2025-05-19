@@ -20,6 +20,7 @@
   outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix }: 
   let
     vars = import ./vars.nix;
+  
   mkMachine = name:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
@@ -30,6 +31,8 @@
           platform = "x86_64-linux";
         };
       modules = [ ./systems/nixos ];
+    };
+  
   mkServer = name:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
@@ -40,7 +43,7 @@
           platform = "x86_64-linux";
         };
       modules = [ ./systems/server ];
-  };
+    };
   in {
     nixosConfigurations = {
       "srv-prod-1" = mkServer "srv-prod-1";

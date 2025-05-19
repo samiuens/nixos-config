@@ -9,7 +9,6 @@
 
       # Modules
       ./modules/docker.nix
-      ./modules/hm.nix
       ./modules/packages.nix
       ./modules/security.nix
       ./modules/sops.nix
