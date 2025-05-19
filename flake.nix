@@ -17,7 +17,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix } @ inputs: 
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix }: 
   let
     vars = import ./vars.nix;
   mkServer = name:
