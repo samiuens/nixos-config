@@ -1,8 +1,8 @@
-{ config, pkgs, hostname, baseDomain, username, ... }: 
+{ config, pkgs, hostname, vars, username, ... }: 
   let 
     name = "traefik";
     image = "traefik:latest";
-    domain = "traefik.${hostname}.${baseDomain}";
+    domain = "traefik.${hostname}.${vars.domain}";
     
     # Container files
     traefikConfig = pkgs.writeTextFile {
@@ -45,8 +45,8 @@
         #"traefik.http.routers.traefik-secure.middlewares" = "traefik-auth";
         "traefik.http.routers.traefik-secure.tls" = "true";
         "traefik.http.routers.traefik-secure.tls.certresolver" = "cloudflare";
-        "traefik.http.routers.traefik-secure.tls.domains[0].main" = "${hostname}.${baseDomain}";
-        "traefik.http.routers.traefik-secure.tls.domains[0].sans" = "*.${hostname}.${baseDomain}";
+        "traefik.http.routers.traefik-secure.tls.domains[0].main" = "${hostname}.${vars.domain}";
+        "traefik.http.routers.traefik-secure.tls.domains[0].sans" = "*.${hostname}.${vars.domain}";
         "traefik.http.routers.traefik-secure.service" = "api@internal";
       };
       extraOptions = [ "--network=${hostname}" ];

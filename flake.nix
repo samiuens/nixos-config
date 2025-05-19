@@ -1,5 +1,5 @@
 {
-  description = "samiarda's server configuration";
+  description = "samiarda's configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -17,23 +17,23 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix }: 
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix } @ inputs: 
   let
-    baseDomain = "samiarda.com";
+    vars = import ./vars.nix;
+  mkServer = name:
+    nixpkgs.lib.nixosSystem {
+      specialArgs = 
+        {
+          inherit inputs vars;
+          hostname = name
+          username = "samiarda";
+          platform = "x86_64-linux";
+        };
+      modules = [ ./server ];
+  };
   in {
     nixosConfigurations = {
-      "srv-prod-1" = nixpkgs.lib.nixosSystem {
-        specialArgs =
-          {
-            inherit inputs baseDomain;
-            hostname = "srv-prod-1";
-            username = "samiarda";
-            platform = "x86_64-linux";
-          };
-        modules = [
-          ./server
-        ];
-      };
+      "srv-prod-1" = mkServer "srv-prod-1";
     };
   };
 }

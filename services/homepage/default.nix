@@ -1,8 +1,8 @@
-{ config, pkgs, hostname, baseDomain, username, ... }: 
+{ config, pkgs, hostname, vars, username, ... }: 
   let 
     name = "homepage";
     image = "ghcr.io/gethomepage/homepage:latest";
-    domain = "home.${hostname}.${baseDomain}";
+    domain = "home.${hostname}.${vars.domain}";
     
     # Container files
     homepageSettings = pkgs.writeTextFile {
