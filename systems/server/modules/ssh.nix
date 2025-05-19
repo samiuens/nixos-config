@@ -11,13 +11,12 @@
   };
 
   users.users.${username}.openssh.authorizedKeys.keyFiles = [
-    ../../secrets/public/${hostname}-keychain.pub
+    ../../../secrets/public/${hostname}-keychain.pub
     ../../../secrets/public/${hostname}-backup.pub
   ];
 
-  services.fail2ban = {
+  /*services.fail2ban = {
     enable = true;
-    logPath = "/var/log/auth.log";
     # Ban IP after 5 failures
     maxretry = 5;
     # Ban IPs for one day on the first ban
@@ -37,5 +36,5 @@
       [Definition]
       failregex = ^%(__prefix_line)sConnection closed by <HOST> \[preauth\]$
     '');
-  };
+  };*/
 }
