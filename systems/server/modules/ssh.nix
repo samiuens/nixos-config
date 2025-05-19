@@ -10,10 +10,10 @@
     };
   };
 
-  users.users.${users}.openssh.authorizedKeys.keyFiles = [
-      ../../secrets/public/${hostname}-keychain.pub
-      ../../../secrets/public/${hostname}-backup.pub
-    ];
+  users.users.${username}.openssh.authorizedKeys.keyFiles = [
+    ../../secrets/public/${hostname}-keychain.pub
+    ../../../secrets/public/${hostname}-backup.pub
+  ];
 
   services.fail2ban = {
     enable = true;
