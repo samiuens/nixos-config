@@ -20,6 +20,16 @@
   outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix }: 
   let
     vars = import ./vars.nix;
+  mkMachine = name:
+    nixpkgs.lib.nixosSystem {
+      specialArgs = 
+        {
+          inherit inputs vars;
+          hostname = name;
+          username = "samiuensay";
+          platform = "x86_64-linux";
+        };
+      modules = [ ./systems/nixos ];
   mkServer = name:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
