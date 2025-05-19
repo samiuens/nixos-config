@@ -2,7 +2,7 @@
   imports =
     [
       ./modules/docker.nix
-      #./modules/hm.nix
+      ./modules/hm.nix
       ./modules/networking.nix
       ./modules/nix.nix
       ./modules/packages.nix
