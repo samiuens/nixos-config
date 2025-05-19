@@ -17,7 +17,6 @@
 
   services.fail2ban = {
     enable = true;
-    filter = "sshd";
     logPath = "/var/log/auth.log";
     # Ban IP after 5 failures
     maxretry = 5;
