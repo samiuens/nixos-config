@@ -10,6 +10,11 @@
     };
   };
 
+  users.users.${users}.openssh.authorizedKeys.keyFiles = [
+      ../../secrets/public/${hostname}-keychain.pub
+      ../../../secrets/public/${hostname}-backup.pub
+    ];
+
   services.fail2ban = {
     enable = true;
     filter = "sshd";
