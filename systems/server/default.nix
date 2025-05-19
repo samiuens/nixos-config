@@ -7,12 +7,9 @@
       ../shared
       ../../machines/${hostname}
 
-      # Home Manager
-      ./home
-
       # Modules
       ./modules/docker.nix
-      ./modules/networking.nix
+      ./modules/hm.nix
       ./modules/packages.nix
       ./modules/security.nix
       ./modules/sops.nix

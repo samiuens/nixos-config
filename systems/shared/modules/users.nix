@@ -2,5 +2,6 @@
   users.users.${username} = {
     description = "${vars.fullName}";
     isNormalUser = true;
+    isHidden = false;
   };
 }

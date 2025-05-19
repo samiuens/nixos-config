@@ -6,5 +6,5 @@
       ../../../secrets/public/${hostname}-keychain.pub
       ../../../secrets/public/${hostname}-backup.pub
     ];
-  }
+  };
 }
