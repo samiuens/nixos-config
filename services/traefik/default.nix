@@ -1,4 +1,4 @@
-{ config, pkgs, hostname, vars, username, ... }: 
+{ config, pkgs, vars, hostname, username, ... }: 
   let 
     name = "traefik";
     image = "traefik:latest";

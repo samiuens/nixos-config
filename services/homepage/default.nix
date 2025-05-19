@@ -1,4 +1,4 @@
-{ config, pkgs, hostname, vars, username, ... }: 
+{ config, pkgs, vars, hostname, username, ... }: 
   let 
     name = "homepage";
     image = "ghcr.io/gethomepage/homepage:latest";
