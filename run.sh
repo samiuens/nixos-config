@@ -20,7 +20,7 @@ switch()
   fi
 
   # if no server configuration exists, then return
-  if [ ! -d "./server/$hostname" ]; then
+  if [ ! -d "./machines/$hostname" ]; then
     echo "no configuration found for $hostname."
     return
   fi
@@ -43,6 +43,12 @@ provision()
   # ask for configuration hostname, if not provided, then return
   if [ -z "$hostname" ]; then
     echo "please provide the ssh hostname."
+    return
+  fi
+
+  # if no server configuration exists, then return
+  if [ ! -d "./machines/$hostname" ]; then
+    echo "no configuration found for $hostname."
     return
   fi
 
