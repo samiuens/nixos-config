@@ -10,11 +10,6 @@
     };
   };
 
-  users.users.${username}.openssh.authorizedKeys.keyFiles = [
-    ../../../secrets/public/${hostname}-keychain.pub
-    ../../../secrets/public/${hostname}-backup.pub
-  ];
-
   /*services.fail2ban = {
     enable = true;
     # Ban IP after 5 failures
