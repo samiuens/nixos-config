@@ -29,7 +29,7 @@
           username = "samiarda";
           platform = "x86_64-linux";
         };
-      modules = [ ./server ];
+      modules = [ ./systems/server ];
   };
   in {
     nixosConfigurations = {
