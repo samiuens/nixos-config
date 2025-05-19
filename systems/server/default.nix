@@ -7,9 +7,11 @@
       ../shared
       ../../machines/${hostname}
 
+      # Packages
+      ./packages.nix
+
       # Modules
       ./modules/docker.nix
-      ./modules/packages.nix
       ./modules/security.nix
       ./modules/sops.nix
       ./modules/ssh.nix
