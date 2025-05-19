@@ -6,5 +6,13 @@
       inputs.home-manager.nixosModules.home-manager
       ../shared
       ../../machines/${hostname}
+
+      # Modules
+      ./modules/docker.nix
+      ./modules/networking.nix
+      ./modules/packages.nix
+      ./modules/security.nix
+      ./modules/sops.nix
+      ./modules/ssh.nix
     ];
 }
