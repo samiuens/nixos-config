@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
   let
     sharedApps = "../../shared/apps"; 
   in 
