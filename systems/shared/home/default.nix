@@ -1,4 +1,5 @@
-{ username, pkgs, ... }: {
+{ username, pkgs, system, ... }: {
+  imports = [ "../../${system}/home" ];
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
