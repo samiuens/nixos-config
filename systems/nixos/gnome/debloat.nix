@@ -7,9 +7,11 @@
     gnome-notes
     gnome-music
     gnome-calendar
+    gnome-calculator
     epiphany
     yelp
     snapshot
     geary
+    simple-scan
   ];
 }
