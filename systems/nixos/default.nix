@@ -7,6 +7,7 @@
       ../../machines/${hostname}
 
       # Hardware
+      ./hardware/bluetooth.nix
       ./hardware/printing.nix
       ./hardware/sound.nix
 
