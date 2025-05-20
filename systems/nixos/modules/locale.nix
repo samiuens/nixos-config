@@ -13,7 +13,7 @@ _: {
   };
   services.xserver.xkb = {
     layout = "de";
-    variant = "";
+    variant = "mac";
   };
   console.keyMap = "de";
 }
