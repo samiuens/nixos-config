@@ -51,7 +51,8 @@
     };
   in {
     nixosConfigurations = {
-      "srv-prod-1" = mkServer "srv-prod-1";
+      "smi-nixos"  = mkMachine "smi-nixos";
+      "srv-prod-1" = mkServer  "srv-prod-1";
     };
   };
 }
