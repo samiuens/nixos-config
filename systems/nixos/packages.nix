@@ -24,6 +24,14 @@ shared-packages ++ [
   # hosting
   termius
 
+  # package managers
+  corepack_24
+  pnpm
+
+  # cli
+  nest-cli
+  awscli2
+
   # security
   yubioath-flutter
   keepassxc
