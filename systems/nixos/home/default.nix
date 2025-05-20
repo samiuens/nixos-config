@@ -4,4 +4,5 @@
   in 
   {
     imports = [];
+    home.packages = pkgs.callPackage ../packages.nix {};
   }
