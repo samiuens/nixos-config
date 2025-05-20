@@ -7,7 +7,7 @@ with pkgs; [
 
   # global node modules
   nodemon
-  nodePackages_latest.ts-node1
+  nodePackages_latest.ts-node
 
   # terminal tools
   tmux
