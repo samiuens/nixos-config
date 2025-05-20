@@ -1,4 +1,5 @@
-{ ... }: {
+{ pkgs, ... }: {
+  documentation.nixos.enable = false;
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-maps
@@ -8,6 +9,7 @@
     gnome-calendar
     epiphany
     yelp
-    snapchat
+    snapshot
+    geary
   ];
 }
