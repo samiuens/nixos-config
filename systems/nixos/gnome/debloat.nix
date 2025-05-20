@@ -8,6 +8,6 @@
     gnome-calendar
     epiphany
     yelp
-    snapchat
+    snapshot
   ];
 }
