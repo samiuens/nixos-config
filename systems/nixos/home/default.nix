@@ -1,8 +1,11 @@
 { pkgs, ... }:
   let
     sharedApps = "../../shared/apps"; 
-  in 
+  in
   {
-    imports = [];
+    imports = 
+      [
+        ${sharedApps}/1password.nix
+      ];
     home.packages = pkgs.callPackage ../packages.nix {};
   }
