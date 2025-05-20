@@ -9,11 +9,14 @@
       # Hardware
       ./hardware/printing.nix
       ./hardware/sound.nix
-      ./hardware/xserver.nix
 
       # Modules
       ./modules/boot.nix
       ./modules/locale.nix
       ./modules/users.nix
+
+      # Gnome
+      ./gnome/xserver.nix
+      ./gnome/debloat.nix
     ];
 }
