@@ -12,6 +12,11 @@ with pkgs; [
   # terminal tools
   tmux
 
+  # security and privacy
+  gnupg
+  age
+  sops
+
   # tools
   yubikey-manager
   just
