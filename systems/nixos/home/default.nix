@@ -5,7 +5,9 @@
   {
     imports = 
       [
-        ${sharedApps}/1password.nix
+        # Applications
+        # Configs
+        ../../shared/configs/git.nix
       ];
     home.packages = pkgs.callPackage ../packages.nix {};
   }

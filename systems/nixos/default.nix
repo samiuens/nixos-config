@@ -18,5 +18,8 @@
       # Gnome
       ./gnome/xserver.nix
       ./gnome/debloat.nix
+
+      # Applications
+      ../shared/apps/1password.nix
     ];
 }
