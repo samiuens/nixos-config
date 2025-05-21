@@ -25,34 +25,24 @@ with pkgs; [
   keepassxc
   cryptomator
 
-  # development
-  gitkraken
-  code-cursor
-  jetbrains.idea-ultimate
-  jetbrains.datagrip
-
   # frameworks
   jdk24
   nodejs_24
   typescript
 
-  # package managers
-  corepack_24
-  pnpm
-
   # cli
   nest-cli
   awscli2
+
+  # package managers (node-specific)
+  corepack_24
+  pnpm
 
   # global node modules
   nodemon
   nodePackages_latest.ts-node
 
-  # terminal tools
-  tmux
-
   # security and privacy
-  gnupg
   age
   sops
 
@@ -60,4 +50,5 @@ with pkgs; [
   yubikey-manager
   just
   statix
+  tmux
 ]
