@@ -2,18 +2,17 @@
   # Zsh shell
   programs.zsh = {
     enable = true;
-    enableCompletions = true;
-    autosuggestions.enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      ll = "ls -l";
-      config = "cd ~/nixos-config && just $1";
-    };
     history.size = 10000;
 
+    shellAliases = {
+      config = "cd ~/nixos-config && just $1";
+    };
+
     # Extending with oh-my-zsh and plugins
-    zsh.ohMyZsh = {
+    oh-my-zsh = {
       enable = true;
       plugins = [ "git" "sudo" "docker" ];
     };
