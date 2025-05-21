@@ -23,6 +23,7 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
   outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, nix-darwin }: 
