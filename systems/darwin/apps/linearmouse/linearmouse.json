@@ -1,0 +1,50 @@
+{
+  "schemes" : [
+    {
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x46d",
+          "productID" : "0xc547",
+          "productName" : "USB Receiver",
+          "category" : "mouse"
+        }
+      },
+      "buttons" : {
+        "universalBackForward" : true
+      },
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.4
+      }
+    },
+    {
+      "buttons" : {
+        "universalBackForward" : true
+      },
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xc098",
+          "serialNumber" : "75ADA10A",
+          "productName" : "G502 X LIGHTSPEED",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.4
+      }
+    }
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
+}
