@@ -24,4 +24,12 @@
     enableZshIntegration = true;
     useTheme = "bubblesline";
   };
+
+  # Eza for better ls command
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    icons = "auto";
+    colors = "auto";
+  };
 }
