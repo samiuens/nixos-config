@@ -2,6 +2,7 @@
   imports = 
     [
       # Applications
+      ../../shared/apps/firefox.nix
       # Configs
       ../../shared/config/git.nix
     ];
