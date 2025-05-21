@@ -6,15 +6,15 @@
     run chmod u+w $HOME/Library/Application\ Support/Firefox/profiles.ini
   '';*/
   
-  home.activation.firefoxProfile = lib.mkMerge [
+  /*home.activation.firefoxProfile = lib.mkMerge [
     (lib.mkIf pkgs.stdenv.isLinux "")
     (lib.mkIf pkgs.stdenv.isDarwin lib.hm.dag.entryAfter [ "writeBoundry" ] ''
       run mv $HOME/Library/Application\ Support/Firefox/profiles.ini $HOME/Library/Application\ Support/Firefox/profiles.hm
       run cp $HOME/Library/Application\ Support/Firefox/profiles.hm $HOME/Library/Application\ Support/Firefox/profiles.ini
       run rm -f $HOME/Library/Application\ Support/Firefox/profiles.ini.bak
       run chmod u+w $HOME/Library/Application\ Support/Firefox/profiles.ini
-    '';)
-  ];
+    '')
+  ];*/
 
   programs.firefox = {
     enable = true;
