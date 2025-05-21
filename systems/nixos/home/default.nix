@@ -4,7 +4,7 @@
       # Applications
       # Configs
       ../gnome/config.nix
-      ../../shared/configs/git.nix
+      ../../shared/config/git.nix
     ];
   home.packages = pkgs.callPackage ../packages.nix {};
 }
