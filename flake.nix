@@ -18,9 +18,14 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix }: 
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, nix-darwin }: 
   let
     vars = import ./vars.nix;
   
