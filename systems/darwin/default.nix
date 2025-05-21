@@ -2,8 +2,12 @@
   imports =
     [
       inputs.home-manager.darwinModules.home-manager
+      inputs.nix-homebrew.darwinModules.nix-homebrew
       ../shared
       ../../machines/${hostname}
+
+      # Modules
+      ./modules/brew.nix
 
       # System settings
       ./system/appearance.nix
