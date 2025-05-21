@@ -31,6 +31,7 @@ with pkgs; [
   code-cursor
   jetbrains.idea-ultimate
   jetbrains.datagrip
+  requestly
 
   # frameworks
   jdk24
