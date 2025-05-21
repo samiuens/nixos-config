@@ -1,15 +1,28 @@
-{ lib, hostname, ... }: {
-  home.activation.firefoxProfile = lib.hm.dag.entryAfter [ "writeBoundry" ] ''
+{ pkgs, lib, hostname, ... }: {
+  /*home.activation.firefoxProfile = lib.hm.dag.entryAfter [ "writeBoundry" ] ''
     run mv $HOME/Library/Application\ Support/Firefox/profiles.ini $HOME/Library/Application\ Support/Firefox/profiles.hm
     run cp $HOME/Library/Application\ Support/Firefox/profiles.hm $HOME/Library/Application\ Support/Firefox/profiles.ini
     run rm -f $HOME/Library/Application\ Support/Firefox/profiles.ini.bak
     run chmod u+w $HOME/Library/Application\ Support/Firefox/profiles.ini
-  '';
+  '';*/
+  
+  home.activation.firefoxProfile = lib.mkMerge [
+    (lib.mkIf pkgs.stdenv.isLinux "")
+    (lib.mkIf pkgs.stdenv.isDarwin lib.hm.dag.entryAfter [ "writeBoundry" ] ''
+      run mv $HOME/Library/Application\ Support/Firefox/profiles.ini $HOME/Library/Application\ Support/Firefox/profiles.hm
+      run cp $HOME/Library/Application\ Support/Firefox/profiles.hm $HOME/Library/Application\ Support/Firefox/profiles.ini
+      run rm -f $HOME/Library/Application\ Support/Firefox/profiles.ini.bak
+      run chmod u+w $HOME/Library/Application\ Support/Firefox/profiles.ini
+    '';)
+  ];
 
   programs.firefox = {
     enable = true;
-    package = null;
-    profiles.samiarda =
+    package = lib.mkMerge [
+      (lib.mkIf pkgs.stdenv.isLinux pkgs.firefox)
+      (lib.mkIf pkgs.stdenv.isDarwin null)
+    ];
+    profiles.samiuensay =
       let profileSettings = {
         # firefox sync
         "identity.fxaccounts.account.device.name" = hostname;
@@ -235,7 +248,7 @@
         "mousewheel.default.delta_multiplier_y" = 200; # 250-400; adjust this number to your liking
       }; in {
         id = 0;
-        name = "Sami Arda";
+        name = "Persönlich";
         isDefault = true;
         settings = profileSettings;
       };
