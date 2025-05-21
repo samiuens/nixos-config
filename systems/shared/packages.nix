@@ -1,4 +1,6 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
+
+# These packages are shared between nixos and darwin.
 with pkgs; [
   # frameworks
   jdk24
