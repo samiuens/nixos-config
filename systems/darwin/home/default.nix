@@ -3,6 +3,9 @@
     [
       # Applications
       ../../shared/apps/firefox.nix
+      ../apps/aerospace
+      ../apps/karabiner
+      ../apps/linearmouse
       # Configs
       ../../shared/config/git.nix
     ];
