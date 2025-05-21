@@ -26,7 +26,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, nix-darwin }: 
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, nix-darwin, nix-homebrew }: 
   let
     vars = import ./vars.nix;
   
