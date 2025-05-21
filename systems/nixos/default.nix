@@ -14,6 +14,7 @@
       # Modules
       ./modules/boot.nix
       ./modules/locale.nix
+      ./modules/security.nix
       ./modules/users.nix
 
       # Gnome

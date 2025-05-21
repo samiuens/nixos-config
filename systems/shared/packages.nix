@@ -28,6 +28,7 @@ with pkgs; [
   # frameworks
   jdk24
   nodejs_24
+  typescript
 
   # package managers
   corepack_24
@@ -37,7 +38,20 @@ with pkgs; [
   nest-cli
   awscli2
 
+  # global node modules
+  nodemon
+  nodePackages_latest.ts-node
+
+  # terminal tools
+  tmux
+
+  # security and privacy
+  gnupg
+  age
+  sops
+
   # tools
+  yubikey-manager
   just
   statix
 ]
