@@ -13,13 +13,12 @@ with pkgs; [
   # hosting
   termius
 
-  # package managers
-  corepack_24
-  pnpm
-
-  # cli
-  nest-cli
-  awscli2
+  # development
+  gitkraken
+  code-cursor
+  requestly
+  jetbrains.idea-ultimate
+  jetbrains.datagrip
 
   # security
   yubioath-flutter
@@ -31,12 +30,19 @@ with pkgs; [
   code-cursor
   jetbrains.idea-ultimate
   jetbrains.datagrip
-  requestly
 
   # frameworks
   jdk24
   nodejs_24
   typescript
+
+  # package managers
+  corepack_24
+  pnpm
+
+  # cli
+  nest-cli
+  awscli2
 
   # global node modules
   nodemon
