@@ -1,3 +1,6 @@
 { ... }: {
-  imports = [];
+  imports = 
+    [
+      ../../shared/config/shell.nix
+    ];
 }
