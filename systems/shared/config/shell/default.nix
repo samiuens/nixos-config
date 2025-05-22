@@ -22,7 +22,7 @@
   programs.oh-my-posh = {
     enable = true;
     enableZshIntegration = true;
-    useTheme = "bubblesline";
+    useTheme = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "./theme.json"));
   };
 
   # Eza for better ls command
