@@ -2,6 +2,9 @@
 
 # These packages are shared between nixos and darwin.
 with pkgs; [
+  # coordination
+  todoist
+  
   # create
   obsidian
   anki
