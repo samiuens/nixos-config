@@ -4,7 +4,7 @@ default:
   if [ "$OSTYPE" == "macos"* ]; then
     sudo darwin-rebuild switch --flake ".#"
   else
-    sudo nixos-rebuild switch --fast --flake ".#"
+    sudo nixos-rebuild switch --flake ".#"
   fi
 
 # Deploy changes for remote host
