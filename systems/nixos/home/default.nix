@@ -3,6 +3,7 @@
     [
       # Applications
       ../../shared/apps/firefox.nix
+      ../../shared/apps/kitty.nix
       # Configs
       ../gnome/config.nix
       ../../shared/config/git.nix

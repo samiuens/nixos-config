@@ -3,6 +3,8 @@
     [
       # Applications
       ../../shared/apps/firefox.nix
+      ../../shared/apps/kitty.nix
+      
       ../apps/aerospace
       ../apps/karabiner
       ../apps/linearmouse
