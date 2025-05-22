@@ -20,6 +20,12 @@
       "org/gnome/shell/extensions/burn-my-windows" = {
         active-profile = "${config.xdg.configHome}/${bmw_config}";
       };
+      "org/gnome/shell/extensions/pano" = {
+        history-length = 100;
+        play-audio-on-copy = false;
+        send-notification-on-copy = false;
+        exclusion-list = ["Bitwarden" "1Password" "KeePassXC" "org.gnome.World.Secrets" ];
+      };
     };
   };
 
