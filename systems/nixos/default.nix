@@ -20,6 +20,7 @@
       # Gnome
       ./gnome/xserver.nix
       ./gnome/debloat.nix
+      ./gnome/extensions.nix
 
       # Applications
       ../shared/apps/1password.nix
