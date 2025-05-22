@@ -3,7 +3,7 @@
 # These packages are shared between nixos and darwin.
 with pkgs; [
   # coordination
-  todoist
+  todoist-electron
   
   # create
   obsidian
@@ -19,7 +19,7 @@ with pkgs; [
   # development
   gitkraken
   code-cursor
-  requestly
+  hoppscotch
   jetbrains.idea-ultimate
   jetbrains.datagrip
 
