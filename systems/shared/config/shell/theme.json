@@ -24,7 +24,7 @@
             "branch_icon": ""
           },
           "style": "diamond",
-          "template": "{{ .HEAD }}",
+          "template": "\ue725 {{ .HEAD }}",
           "trailing_diamond": "\ue0b4",
           "type": "git"
         },
@@ -125,6 +125,18 @@
     {
       "alignment": "left",
       "segments": [
+        {
+          "background": "#424242",
+          "foreground": "#1E6FF1",
+          "leading_diamond": "\ue0b6",
+          "style": "diamond",
+          "properties": {
+            "nixos": "\ue843",
+            "darwin": "\ue711"
+          },
+          "template": "{{ .Icon }}",
+          "type": "os"
+        },
         {
           "background": "#424242",
           "foreground": "#1E6FF1",
