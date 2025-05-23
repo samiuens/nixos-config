@@ -23,6 +23,7 @@ By using this method, it is always possible to recover my secrets and change the
     - [Authentication key](#authentication-key)
   - [Verify transfer](#verify-transfer)
 - [Interim check](#interim-check)
+- [Loading keys on other systems](#loading-keys-on-other-systems)
 - [Sources](#sources)
 
 # Prepare GnuPG
@@ -280,6 +281,74 @@ Verify the following steps were performed correctly:
   - `gpg -K` followed by `ssb>` shows for each of the three subkeys;
 
 Restart the shell for a clean environment, to complete the setup.
+
+# Loading keys on other systems
+Here are steps provided, for importing the keys from the yubikeys, on other systems or after resetting the system/gpg.
+
+Import the public key with the desired method.
+```console
+gpg --recv $KEYID # Import from public key server
+gpg --import ~/secrets/public.asc
+```
+
+Fetch the keys to GnuPG using `gpg-card`.
+```console
+gpg/card> fetch
+gpg/card> quit
+```
+
+Get the key ID and exporting it by running the following command.
+```console
+export KEYID=$(gpg -k)  
+```
+
+Assign ultimate trust to the imported key.
+```console
+gpg --command-fd=0 --pinentry-mode=loopback --edit-key $KEYID <<EOF
+trust
+5
+y
+save
+EOF
+```
+
+Remove and re-insert the yubikey.
+Verify the status with `gpg --card-status` which will list the available subkeys.
+```console
+Reader ...........: Yubico YubiKey OTP FIDO CCID 00 00
+Application ID ...: D2760001240102010006055532110000
+Application type .: OpenPGP
+Version ..........: 3.4
+Manufacturer .....: Yubico
+Serial number ....: 05553211
+Name of cardholder: YubiKey User
+Language prefs ...: en
+Salutation .......:
+URL of public key : [not set]
+Login data .......: yubikey@example
+Signature PIN ....: not forced
+Key attributes ...: rsa4096 rsa4096 rsa4096
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 0
+KDF setting ......: on
+Signature key ....: CF5A 305B 808B 7A0F 230D  A064 B3CD 10E5 02E1 9637
+      created ....: 2025-01-01 12:00:00
+Encryption key....: A5FA A005 5BED 4DC9 889D  38BC 30CB E8C4 B085 B9F7
+      created ....: 2025-01-01 12:00:00
+Authentication key: 570E 1355 6D01 4C04 8B6D  E2A3 AD9E 24E1 B8CB 9600
+      created ....: 2025-01-01 12:00:00
+General key info..: sub  rsa4096/0xB3CD10E502E19637 2025-01-01 YubiKey User <yubikey@example>
+sec#  rsa4096/0xF0F2CFEB04341FB5  created: 2025-01-01  expires: never
+ssb>  rsa4096/0xB3CD10E502E19637  created: 2025-01-01  expires: 2027-05-01
+                                  card-no: 0006 05553211
+ssb>  rsa4096/0x30CBE8C4B085B9F7  created: 2025-01-01  expires: 2027-05-01
+                                  card-no: 0006 05553211
+ssb>  rsa4096/0xAD9E24E1B8CB9600  created: 2025-01-01  expires: 2027-05-01
+                                  card-no: 0006 05553211
+```
+The `sec#` attribute, indicates that the corresponding key is not available (Certify key is offline).
+The yubikey is now ready for use!
 
 # Sources
 - https://github.com/drduh/YubiKey-Guide/tree/master
