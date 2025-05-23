@@ -3,7 +3,6 @@
     [
       # Modules
       ./modules/fonts.nix
-      ./modules/gnupg.nix
       ./modules/hm.nix
       ./modules/networking.nix
       ./modules/nix.nix
