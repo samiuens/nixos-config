@@ -4,7 +4,7 @@
     shellIntegration.enableZshIntegration = true;
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 11;
+      size = 12;
     };
     settings = {
       confirm_os_window_close = 0;
