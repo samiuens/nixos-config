@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }: {
   programs.gpg = {
     enable = true;
-    agent.enable = true;
     settings = {
       personal-cipher-preferences = [ "AES256" "AES192" "AES" ];
       personal-digest-preferences = [ "SHA512" "SHA384" "SHA256" ];
@@ -29,4 +28,5 @@
       disable-ccid = true;
     };
   };
+  services.gpg-agent.enable = true;
 }
