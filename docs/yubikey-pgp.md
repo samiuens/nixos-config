@@ -36,7 +36,7 @@ export SECRET_PATH="~/secrets"
 
 Set description for future key identification.
 ```console
-export IDENTITY="Sami Arda Ünsay <yubikey@samiuensay.de> ($keylabel)"
+export IDENTITY="Surname, Forname <email@domain.com> ($keylabel)"
 ```
 
 Set the key type to `RSA 4096`.
@@ -100,7 +100,7 @@ The output will display [C]ertify, [S]ignature, [E]ncryption and [A]uthenticatio
 ```console
 sec   rsa4096/0xF0F2CFEB04341FB5 2025-01-01 [C]
       Key fingerprint = 4E2C 1FA3 372C BA96 A06A  C34A F0F2 CFEB 0434 1FB5
-uid                   [ultimate] Sami Arda Ünsay <yubikey@samiuensay.de>
+uid                   [ultimate] Surname, Forname <email@domain.com>
 ssb   rsa4096/0xB3CD10E502E19637 2025-01-01 [S] [expires: 2027-05-01]
 ssb   rsa4096/0x30CBE8C4B085B9F7 2025-01-01 [E] [expires: 2027-05-01]
 ssb   rsa4096/0xAD9E24E1B8CB9600 2025-01-01 [A] [expires: 2027-05-01]
@@ -260,7 +260,7 @@ Run `gpg -K` – indicated by `ssb>` The `>` after a tag indicates the key is st
 ```console
 sec   rsa4096/0xF0F2CFEB04341FB5 2025-01-01 [C]
       Key fingerprint = 4E2C 1FA3 372C BA96 A06A  C34A F0F2 CFEB 0434 1FB5
-uid                   [ultimate] Sami Arda Ünsay <yubikey@samiuensay.de>
+uid                   [ultimate] Surname, Forname <email@domain.com>
 ssb>  rsa4096/0xB3CD10E502E19637 2025-01-01 [S] [expires: 2027-05-01]
 ssb>  rsa4096/0x30CBE8C4B085B9F7 2025-01-01 [E] [expires: 2027-05-01]
 ssb>  rsa4096/0xAD9E24E1B8CB9600 2025-01-01 [A] [expires: 2027-05-01]
