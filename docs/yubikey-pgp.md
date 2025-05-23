@@ -20,7 +20,7 @@ These include confidential access data for all my machines & servers.
     - [Authentication key](#authentication-key)
   - [Verify transfer](#verify-transfer)
 - [Interim check](#interim-check)
-
+- [Sources](#sources)
 
 # Prepare GnuPG
 ## Set variables
@@ -271,3 +271,7 @@ Verify the following steps were performed correctly:
   - `gpg -K` followed by `ssb>` shows for each of the three subkeys;
 
 Restart the shell for a clean environment, to complete the setup.
+
+# Sources
+- https://github.com/drduh/YubiKey-Guide/tree/master
+  - This guide is heavily inspired by @drduh. Big thanks for his extensive guide.
