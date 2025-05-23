@@ -1,10 +1,7 @@
-{ config, pkgs, lib, ... }:
-
-{
+{ config, pkgs, lib, ... }: {
   programs.gpg = {
     enable = true;
-    #agent.enable = true;
-
+    agent.enable = true;
     settings = {
       personal-cipher-preferences = [ "AES256" "AES192" "AES" ];
       personal-digest-preferences = [ "SHA512" "SHA384" "SHA256" ];
@@ -27,6 +24,9 @@
       armor = true;
       use-agent = true;
       throw-keyids = true;
+    };
+    scdaemonSettings = {
+      disable-ccid = true;
     };
   };
 }
