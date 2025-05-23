@@ -272,11 +272,11 @@ Verify the following steps were performed correctly:
   - `echo $CERTIFY_PASS` to see it again;
 - [ ] Saved the Certify key and Subkeys to encrypted portable storage, to be kept offline
   - At least two backups are commended, stored at seperate locations and different types of media
-- [ ] Exported a copy of the publiey key, where it is easily accessible
+- [ ] Exported a copy of the public key, where it is easily accessible
   - Seperate devices, non-encrypted storage or even github
 - [ ] Memorized or wrote down the `USER` and `ADMIN` PINS, which are unique and got changed from default values
   - `echo $USER_PIN $ADMIN_PIN` to see them again;
-- [ ] Moved [E]ncryption, [S]ignature and [A]uthentication subkeys to yubikey
+- [ ] Moved **[E]**ncryption, **[S]**ignature and **[A]**uthentication subkeys to yubikey
   - `gpg -K` followed by `ssb>` shows for each of the three subkeys;
 
 Restart the shell for a clean environment, to complete the setup.
