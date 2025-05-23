@@ -6,6 +6,10 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     history.size = 10000;
+    autocd = true;
+    initContent = ''
+      export GPG_TTY=$(tty)
+    '';
 
     shellAliases = {
       config = "cd ~/nixos-config && just $1";

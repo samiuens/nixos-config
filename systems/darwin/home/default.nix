@@ -10,7 +10,8 @@
       ../apps/linearmouse
       # Configs
       ../../shared/config/git.nix
-      ../../shared/config/shell.nix
+      ../../shared/config/shell
+      ../../shared/config/gpg
       # Quirks
       ./firefox-fix.nix
     ];
