@@ -7,7 +7,7 @@
     syntaxHighlighting.enable = true;
     history.size = 10000;
     autocd = true;
-    initExtra = ''
+    initContent = ''
       GPG_TTY=$(tty)
     '';
 
