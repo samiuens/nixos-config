@@ -28,6 +28,12 @@ By using this method, it is always possible to recover my secrets and change the
 # Prepare GnuPG
 ## Set variables
 
+Set a path, where to store all secret files for saving them later.
+Make sure the folder exists in your local filesystem.
+```console
+export SECRET_PATH="~/secrets"
+```
+
 Set description for future key identification.
 ```console
 export IDENTITY="Sami Arda Ünsay <yubikey@samiuensay.de> ($keylabel)"
@@ -105,16 +111,16 @@ ssb   rsa4096/0xAD9E24E1B8CB9600 2025-01-01 [A] [expires: 2027-05-01]
 Save a copy of the Certify key, subkeys and public key.
 ```console
 echo "$CERTIFY_PASS" | \
-    gpg --output $GNUPGHOME/$KEYID-Certify.key \
+    gpg --output $SECRET_PATH/$KEYID-certify.key \
         --batch --pinentry-mode=loopback --passphrase-fd 0 \
         --armor --export-secret-keys $KEYID
 
 echo "$CERTIFY_PASS" | \
-    gpg --output $GNUPGHOME/$KEYID-Subkeys.key \
+    gpg --output $SECRET_PATH/$KEYID-subkeys.key \
         --batch --pinentry-mode=loopback --passphrase-fd 0 \
         --armor --export-secret-subkeys $KEYID
 
-gpg --output $GNUPGHOME/$KEYID-$(date +%F).asc \
+gpg --output $SECRET_PATH/$KEYID-$(date +%F).asc \
     --armor --export $KEYID
 ```
 
