@@ -10,7 +10,9 @@
     };
     taps = [];
     brews = [];
-    casks = [];
+    casks = [
+      "firefox"
+    ];
     masApps = {};
   };
   

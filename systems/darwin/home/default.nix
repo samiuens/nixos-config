@@ -11,6 +11,8 @@
       # Configs
       ../../shared/config/git.nix
       ../../shared/config/shell.nix
+      # Quirks
+      ./firefox-fix.nix
     ];
   home.packages = pkgs.callPackage ../packages.nix {};
 }
