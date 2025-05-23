@@ -8,7 +8,7 @@
     history.size = 10000;
     autocd = true;
     initContent = ''
-      GPG_TTY=$(tty)
+      export GPG_TTY=$(tty)
     '';
 
     shellAliases = {
