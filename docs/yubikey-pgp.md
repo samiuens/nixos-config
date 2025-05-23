@@ -1,6 +1,9 @@
 # Guide on using pgp keys in combination with a yubikey
-In my configuration, I am using these pgp keys to encrypt my [sops-nix]() secrets.
+In my configuration, I am using these pgp keys to encrypt my [sops-nix](https://github.com/Mic92/sops-nix) secrets.
 These include confidential access data for all my machines & servers. 
+
+In my case, I have two yubikeys both with access to my secrets, in case one breaks or gets lost.
+By using this method, it is always possible to recover my secrets and change the keys for the secret file.
 
 ## Table of Contents
 - [Prepare GnuPG](#prepare-gnupg)
@@ -25,7 +28,7 @@ These include confidential access data for all my machines & servers.
 # Prepare GnuPG
 ## Set variables
 
-Set description for future identification.
+Set description for future key identification.
 ```console
 export IDENTITY="Sami Arda Ünsay <yubikey@samiuensay.de> ($keylabel)"
 ```
@@ -36,7 +39,7 @@ export KEY_TYPE=rsa4096
 ```
 
 Generate a passphrase for the Certify key. 
-This credential will be used to manage identity Subkeys.
+This credential will be used to manage identity subkeys.
 ```console
 export CERTIFY_PASS=$(LC_ALL=C tr -dc "A-Z2-9" < /dev/urandom | \
     tr -d "IOUS5" | \
@@ -49,8 +52,8 @@ Save the passphrase at a safe location.
 
 # Key operations
 ## Create Certify key
-The primary key to generate is the Certify key, which is responsible for issuing Subkeys for encryption, signature and authentication operations.
-The Certify key should be kept offline at all times and only accessed from a dedicated and secure environment to issue or revoke Subkeys.
+The primary key to generate is the Certify key, which is responsible for issuing subkeys for encryption, signature and authentication operations.
+The Certify key should be kept safely at all times and only accessed from a dedicated and secure environment to issue or revoke subkeys.
 
 Generate the certify key.
 ```console
@@ -59,7 +62,7 @@ echo "$CERTIFY_PASS" | \
         --quick-generate-key "$IDENTITY" "$KEY_TYPE" cert never
 ```
 
-Set and view the Certify key identifier and fingerprint for use later.
+Set and view the Certify key identifier and fingerprint for referencing later.
 ```console
 export KEYID=$(gpg -k --with-colons "$IDENTITY" | \
     awk -F: '/^pub:/ { print $5; exit }')
@@ -71,7 +74,7 @@ printf "\nKey ID: %40s\nKey FP: %40s\n\n" "$KEYID" "$KEYFP"
 ```
 
 ## Create subkeys
-Generate Signature, Encryption and Authentication Subkeys using the previously configured key type, passphrase and expiration.
+Generate Signature, Encryption and Authentication subkeys using the previously configured variables.
 ```console
 for SUBKEY in sign encrypt auth ; do \
     echo "$CERTIFY_PASS" | \
@@ -82,12 +85,12 @@ done
 
 ## Verify keys
 
-List available secret keys.
+List available secret keys, which are known to gpg.
 ```console
 gpg -K
 ```
 
-The output will display [C]ertify, [S]ignature, [E]ncryption and [A]uthentication keys.
+The output will display [C]ertify, [S]ignature, [E]ncryption and [A]uthentication keys, to check the status of these keys.
 ```console
 sec   rsa4096/0xF0F2CFEB04341FB5 2025-01-01 [C]
       Key fingerprint = 4E2C 1FA3 372C BA96 A06A  C34A F0F2 CFEB 0434 1FB5
@@ -99,7 +102,7 @@ ssb   rsa4096/0xAD9E24E1B8CB9600 2025-01-01 [A] [expires: 2027-05-01]
 
 ## Backup keys
 
-Save a copy of the Certify key, Subkeys and public key.
+Save a copy of the Certify key, subkeys and public key.
 ```console
 echo "$CERTIFY_PASS" | \
     gpg --output $GNUPGHOME/$KEYID-Certify.key \
@@ -118,14 +121,14 @@ gpg --output $GNUPGHOME/$KEYID-$(date +%F).asc \
 ## Export public key
 
 > [!IMPORTANT]
-> Without the public key, it will not be possible to use GnuPG to decrypt/sign messages!
+> Without the public key, it will not be possible to use GnuPG for decrypting or signing operations!
 
-Export the public key, this is safe to share.
+Export the public key. This key is safe to share, everywhere.
 ```console
 gpg --armor --export $KEYID | sudo tee /mnt/public/$KEYID-$(date +%F).asc
 ```
 
-# Configure YubiKey
+# Configure yubikey
 
 Connect the yubikey and confirm its status.
 ```console
@@ -134,7 +137,7 @@ gpg --card-status
 
 <details>
 
-<summary>In case the yubikey is locked:</summary>
+<summary>In case the yubikey says, its locked:</summary>
 
 > [!CAUTION]
 > The following step with delete all pgp keys stored on the yubikey.
@@ -146,7 +149,7 @@ ykman openpgp reset
 </details>
 
 ## Change PIN
-The yubikey pgp interface has its own PINs seperated from other modules such as FIDO2 or PIV:
+The yubikey pgp interface has its own PINs seperated from other modules such as [FIDO2](https://www.yubico.com/authentication-standards/fido2/) or [PIV](https://www.yubico.com/authentication-standards/smart-card/):
 
 Name | Default | Capability
 :---: | :---: | ---
@@ -165,7 +168,7 @@ printf "\nAdmin PIN: %12s\nUser PIN: %13s\n\n" \
     "$ADMIN_PIN" "$USER_PIN"
 ```
 
-Change the `USER` pin by running the following:
+Change the `USER` pin by running the following
 ```console
 gpg --command-fd=0 --pinentry-mode=loopback --change-pin <<EOF
 3
@@ -175,7 +178,7 @@ $ADMIN_PIN
 q
 EOF
 ```
-and the `ADMIN` pin:
+and the `ADMIN` pin
 ```console
 gpg --command-fd=0 --pinentry-mode=loopback --change-pin <<EOF
 1
@@ -189,10 +192,10 @@ EOF
 Remove and re-insert the yubikey from the usb port its plugged into.
 
 > [!WARNING]
-> Three incorrect User PIN entries will cause it to become blocked and must be unblocked with either the Admin PIN or Reset Code. This will destroy any pgp data on the YubiKey.
+> Three incorrect User PIN entries will cause it to become blocked and must be unblocked with either the Admin PIN or Reset Code. This will destroy any pgp data on the yubikey.
 
 ## Use variables
-Use the previously set values in gpg key creation process
+Use the previously set values in the gpg key creation process.
 ```console
 gpg --command-fd=0 --pinentry-mode=loopback --edit-card <<EOF
 admin
@@ -205,9 +208,9 @@ EOF
 
 ## Transfer subkeys
 > [!CAUTION]
-> Transferring keys to YubiKey converts the on-disk key into a "stub" - making it no longer usable to transfer to subsequent YubiKeys. Ensure keys were backed up before proceeding.
+> Transferring keys to yubikey converts the on-disk key into a "stub" - making it no longer usable to transfer to other yubikeys. Ensure keys were backed up before proceeding.
 
-Required: Certify key passphrase and Admin PIN.
+**Required:** Certify key passphrase and Admin PIN.
 
 In this step the following keys will be transfered to the yubikey.
 ### Signature key
@@ -233,7 +236,7 @@ save
 EOF
 ```
 ### Authentication key
-```
+```console
 gpg --command-fd=0 --pinentry-mode=loopback --edit-key $KEYID <<EOF
 key 3
 keytocard
