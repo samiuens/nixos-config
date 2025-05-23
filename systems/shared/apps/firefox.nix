@@ -48,6 +48,8 @@
         # native firefox vertical tabs
         "sidebar.revamp" = true;
         "sidebar.verticalTabs" = true;
+        "sidebar.main.tools" = "history,syncedtabs,bookmarks";
+        "sidebar.visibility" = "always-show";
 
         ### SECTION: Fastfox
         # GENERAL
