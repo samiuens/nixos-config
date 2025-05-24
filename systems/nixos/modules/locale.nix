@@ -1,4 +1,4 @@
-_: {
+{ dualBoot, ... }: {
   i18n.defaultLocale = "de_DE.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
@@ -16,4 +16,5 @@ _: {
     variant = "mac";
   };
   console.keyMap = "de";
+  time.hardwareClockInLocalTime = if (dualBoot == true) then true else false;
 }

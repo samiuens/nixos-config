@@ -30,7 +30,7 @@
   let
     vars = import ./vars.nix;
   
-  mkMachine = name:
+  mkMachine = name: dualboot:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
@@ -39,6 +39,7 @@
           username = "samiuensay";
           platform = "x86_64-linux";
           system = "nixos";
+          dualBoot = dualboot;
         };
       modules = [ ./systems/nixos ];
     };
@@ -69,7 +70,8 @@
     };
   in {
     nixosConfigurations = {
-      "smi-nixos"  = mkMachine "smi-nixos";
+      # Machine name, type,    hostname,    (dualboot?)
+      "smi-nixos"  = mkMachine "smi-nixos" true;
       "srv-prod-1" = mkServer  "srv-prod-1";
     };
     darwinConfigurations = {
