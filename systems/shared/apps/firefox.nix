@@ -8,17 +8,19 @@
 
     policies = {
       ExtensionSettings = with builtins;
-        let extension = shortId: uuid: {
-          name = uuid;
+        let extension = shortId: extensionId: {
+          name = extensionId;
           value = {
             install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
             installation_mode = "normal_installed";
           };
         };
         in listToAttrs [
+          # shortId: firefox extension store url;
+          # extensionId: get by visiting "about:debugging#/runtime/this-firefox";
           (extension "ublock-origin" "uBlock0@raymondhill.net")
           (extension "1password-x-password-manager" "{d634138d-c276-4fc8-924b-40a0ea21d284}")
-          (extension "raindropio" "jid0-adyhmvsP91nUO8pRv0Mn2VKeB84@jetpack")
+          (extension "web-clipper-obsidian" "clipper@obsidian.md")
           (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
         ];
