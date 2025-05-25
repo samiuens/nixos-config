@@ -237,6 +237,7 @@
         "dom.security.https_only_mode_error_page_user_suggestions" = true;
 
         "layout.spellcheckDefault" = 0;
+        "browser.toolbars.bookmarks.visibility" = "always";
 
         ### SECTION: Scrolling
         "apz.overscroll.enabled" = true; # DEFAULT NON-LINUX
