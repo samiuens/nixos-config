@@ -23,10 +23,17 @@
       armor = true;
       use-agent = true;
       throw-keyids = true;
+      keyserver = "https://keys.openpgp.org"; 
     };
     scdaemonSettings = {
       disable-ccid = true;
     };
   };
-  services.gpg-agent.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = lib.mkMerge [
+      (lib.mkIf pkgs.stdenv.isLinux pkgs.pinentry-gnome3)
+      (lib.mkIf pkgs.stdenv.isDarwin pkgs.pinentry_mac)
+    ];
+  };
 }
