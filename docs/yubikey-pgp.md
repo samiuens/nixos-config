@@ -121,7 +121,7 @@ echo "$CERTIFY_PASS" | \
         --batch --pinentry-mode=loopback --passphrase-fd 0 \
         --armor --export-secret-subkeys $KEYID
 
-gpg --output $SECRET_PATH/$KEYID-$(date +%F).asc \
+gpg --output $SECRET_PATH/$KEYID-public.asc \
     --armor --export $KEYID
 ```
 
@@ -131,8 +131,10 @@ gpg --output $SECRET_PATH/$KEYID-$(date +%F).asc \
 > Without the public key, it will not be possible to use GnuPG for decrypting or signing operations!
 
 Export the public key. This key is safe to share, everywhere.
+This step is only needed, if you want the public key file at an other place.
+It is automatically backed up, due to the previous step.
 ```console
-gpg --armor --export $KEYID | sudo tee /mnt/public/$KEYID-$(date +%F).asc
+gpg --armor --export $KEYID | sudo tee $SECRET_PATH/$KEYID-$(date +%F)-public.asc
 ```
 
 # Configure yubikey
@@ -146,8 +148,7 @@ gpg --card-status
 
 <summary>In case the yubikey says, its locked:</summary>
 
-> [!CAUTION]
-> The following step with delete all pgp keys stored on the yubikey.
+**The following step with delete all pgp keys stored on the yubikey!**
 
 Reset with yubikey with help of ykman as described below.
 ```console
@@ -167,10 +168,10 @@ Reset Code | None | Reset PIN ([more information](https://forum.yubico.com/viewt
 Determine the desired PIN values. They can be shorter than the Certify key passphrase due to limited brute-forcing opportunities; the User PIN should be convenient enough to remember for every-day use.
 The User PIN must be at least 6 characters and the Admin PIN must be at least 8 characters.
 
-Prepare PIN values for `USER` and `ADMIN`
+Prepare PIN values for `ADMIN` and `USER`
 ```console
-export USER_PIN=123456
 export ADMIN_PIN=12345678
+export USER_PIN=123456
 printf "\nAdmin PIN: %12s\nUser PIN: %13s\n\n" \
     "$ADMIN_PIN" "$USER_PIN"
 ```
@@ -277,7 +278,7 @@ Verify the following steps were performed correctly:
   - Seperate devices, non-encrypted storage or even github
 - [ ] Memorized or wrote down the `USER` and `ADMIN` PINS, which are unique and got changed from default values
   - `echo $USER_PIN $ADMIN_PIN` to see them again;
-- [ ] Moved **[E]**ncryption, **[S]**ignature and **[A]**uthentication subkeys to yubikey
+- [ ] Moved Encryption, Signature and Authentication subkeys to yubikey
   - `gpg -K` followed by `ssb>` shows for each of the three subkeys;
 
 Restart the shell for a clean environment, to complete the setup.
@@ -299,7 +300,8 @@ gpg/card> quit
 
 Get the key ID and exporting it by running the following command.
 ```console
-export KEYID=$(gpg -k)  
+gpg -k # Copy the key ID and export it, as described below.
+export KEYID=0xF0F2CFEB04341FB5
 ```
 
 Assign ultimate trust to the imported key.
