@@ -7,8 +7,8 @@
       ../../shared/apps/syncthing.nix
       # Configs
       ../gnome/config.nix
-      ../../shared/config/git.nix
       ../../shared/config/shell
+      ../../shared/config/git.nix
       ../../shared/config/ssh.nix
       ../../shared/config/gpg
     ];

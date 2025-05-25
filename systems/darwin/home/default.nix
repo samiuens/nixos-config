@@ -9,8 +9,8 @@
       ../apps/karabiner
       ../apps/linearmouse
       # Configs
-      ../../shared/config/git.nix
       ../../shared/config/shell
+      ../../shared/config/git.nix
       ../../shared/config/ssh.nix
       ../../shared/config/gpg
       # Quirks
