@@ -20,6 +20,8 @@
     image = "${image}";
     environment = {
       TZ = "${vars.server.timezone}";
+      PUID = "0";
+      PGID = "0";
     };
     volumes = [
       "${volumePath}/config:/config"
