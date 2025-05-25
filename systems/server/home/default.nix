@@ -1,6 +1,7 @@
 { ... }: {
   imports = 
     [
-      ../../shared/config/shell.nix
+      ../../shared/config/shell
+      ../../shared/config/git.nix
     ];
 }
