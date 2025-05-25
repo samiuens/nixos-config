@@ -176,7 +176,7 @@ printf "\nAdmin PIN: %12s\nUser PIN: %13s\n\n" \
     "$ADMIN_PIN" "$USER_PIN"
 ```
 
-Change the `USER` pin by running the following
+Change the `ADMIN` pin by running the following
 ```console
 gpg --command-fd=0 --pinentry-mode=loopback --change-pin <<EOF
 3
@@ -186,7 +186,7 @@ $ADMIN_PIN
 q
 EOF
 ```
-and the `ADMIN` pin
+and the `USER` pin
 ```console
 gpg --command-fd=0 --pinentry-mode=loopback --change-pin <<EOF
 1
