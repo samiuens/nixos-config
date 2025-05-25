@@ -12,11 +12,13 @@
     image = "${image}";
     environment = {
       TZ = "${vars.server.timezone}";
+      PUID = "0";
+      PGID = "0";
     };
     volumes = [
       "${volumePath}/data:/config"
       "/mnt/media/media/movies:/movies"
-      "/mnt/media/downloads/movies:/downloads"
+      "/mnt/media/downloads/movies:/mnt/media/downloads/movies"
     ];
     labels = {
       "traefik.enable" = "true";

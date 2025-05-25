@@ -12,6 +12,8 @@
     image = "${image}";
     environment = {
       JELLYFIN_PublishedServerUrl = "${domain}";
+      PUID = "0";
+      PGID = "0";
     };
     volumes = [
       "${volumePath}/config:/config"
