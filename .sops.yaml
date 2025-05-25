@@ -1,8 +1,8 @@
 keys:
   # Personal yubikeys
   - &samiarda
-    - &keychain 00209B52F8A651F4CAD8385C419C4F9E21E8F900
-    - &backup  E95FDF6DDC6967B7B317F23DE92236CA94126BC6
+    - &keychain 0BE1 FA6C 1618 6B35 B550  B1E6 1C30 B1CE E9AC F97D
+    - &backup   3964 72B3 FDE2 8A91 8B6A  6486 B841 D3FC 609A B98B
   # Converted ssh host keys
   - &hosts
     # nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
