@@ -3,12 +3,7 @@
     name = "traefik";
     image = "traefik:latest";
     domain = "traefik.${hostname}.${vars.domain}";
-    
-    # Container files
-    traefikConfig = pkgs.writeTextFile {
-      name = "treafik.yaml";
-      text = builtins.readFile ./traefik.yaml;
-    };
+    volumePath = "/srv/${name}";
   in {
     # Allow DNS (53), HTTP (80) and HTTPS (443)
     networking.firewall.allowedTCPPorts = [ 53 80 443 ];
@@ -27,7 +22,7 @@
       ports = [ "80:80" "443:443" ];
       volumes = [
         "/var/run/docker.sock:/var/run/docker.sock:ro"
-        "${traefikConfig}:/etc/traefik/traefik.yaml:ro"
+        "${volumePath}:/etc/traefik"
       ];
       environmentFiles = [
         "${config.sops.secrets.traefik-env.path}"
