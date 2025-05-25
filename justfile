@@ -8,8 +8,8 @@ default:
   fi
 
 # Deploy changes for remote host
-deploy host:
-  nixos-rebuild switch --fast --flake ".#{{host}}" --use-remote-sudo --build-host "samiarda@{{host}}" --target-host "samiarda@{{host}}" 
+deploy host method='switch':
+  nixos-rebuild {{method}} --fast --flake ".#{{host}}" --use-remote-sudo --build-host "samiarda@{{host}}" --target-host "samiarda@{{host}}" 
 
 # Update nix flakes
 up:
