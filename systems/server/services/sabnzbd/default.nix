@@ -18,6 +18,9 @@
   # Define the container
   virtualisation.oci-containers.containers."${name}" = {
     image = "${image}";
+    environment = {
+      TZ = "${vars.server.timezone}";
+    };
     volumes = [
       "${volumePath}/config:/config"
       "${volumePath}/downloads/incomplete:/incomplete-downloads"
