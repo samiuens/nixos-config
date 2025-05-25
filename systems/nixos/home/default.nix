@@ -9,6 +9,7 @@
       ../gnome/config.nix
       ../../shared/config/git.nix
       ../../shared/config/shell
+      ../../shared/config/ssh.nix
       ../../shared/config/gpg
     ];
   home.packages = pkgs.callPackage ../packages.nix {};
