@@ -13,6 +13,7 @@
       # Modules
       ./modules/docker.nix
       ./modules/networking.nix
+      ./modules/nix.nix
       ./modules/security.nix
       ./modules/sops.nix
       ./modules/ssh.nix

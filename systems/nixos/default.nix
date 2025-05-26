@@ -15,6 +15,7 @@
       ./modules/boot.nix
       ./modules/locale.nix
       ./modules/networking.nix
+      ./modules/nix.nix
       ./modules/security.nix
       ./modules/users.nix
 
