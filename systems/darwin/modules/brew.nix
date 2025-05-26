@@ -13,6 +13,7 @@
     casks = [
       # create
       "obsidian"
+      "anki"
 
       # consume
       "firefox"

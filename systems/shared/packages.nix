@@ -3,7 +3,6 @@
 # These packages are shared between nixos and darwin.
 with pkgs; [  
   # create
-  anki
   drawio
 
   # communication
