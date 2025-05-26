@@ -20,11 +20,17 @@
 
       # hosting
       "termius"
+      
+      # development
+      "trae"
 
       # security
       "1password"
       "yubico-authenticator"
       "cryptomator"
+
+      # utils
+      "raycast"
     ];
     masApps = {};
   };

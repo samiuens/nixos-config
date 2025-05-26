@@ -10,7 +10,7 @@
       ../apps/linearmouse
       # Configs
       ../../shared/config/shell
-      ../../shared/config/git.nix
+      #../../shared/config/git.nix
       ../../shared/config/ssh.nix
       ../../shared/config/gpg
       # Quirks
