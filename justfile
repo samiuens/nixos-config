@@ -1,7 +1,7 @@
 # Deploy changes for local machine
 default:
   #!/usr/bin/env sh
-  if [ "$OSTYPE" == "macos"* ]; then
+  if [ "$(uname)" == "Darwin" ]; then
     sudo darwin-rebuild switch --flake ".#"
   else
     sudo nixos-rebuild switch --flake ".#"
