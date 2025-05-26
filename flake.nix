@@ -50,7 +50,7 @@
           inherit inputs vars;
           hostname = name;
           username = "samiuensay";
-          platform = "x86_64-linux";
+          platform = "aarch64-darwin";
           system = "darwin";
         };
       modules = [ ./systems/darwin ];
