@@ -12,6 +12,7 @@
   };
   nixpkgs = {
     config.allowUnfree = true;
+    config.allowBroken = if (platform == "aarch64-darwin") then true else false;
     hostPlatform = lib.mkDefault "${platform}";
   };
 }
