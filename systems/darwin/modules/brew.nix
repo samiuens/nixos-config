@@ -11,7 +11,19 @@
     taps = [];
     brews = [];
     casks = [
+      # create
+      "obsidian"
+
+      # consume
       "firefox"
+
+      # hosting
+      "termius"
+
+      # security
+      "1password"
+      "yubioath-flutter"
+      "cryptomator"
     ];
     masApps = {};
   };

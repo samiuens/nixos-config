@@ -3,15 +3,11 @@
 # These packages are shared between nixos and darwin.
 with pkgs; [  
   # create
-  obsidian
   anki
   drawio
 
   # communication
   discord
-
-  # hosting
-  termius
 
   # development
   gitkraken
@@ -21,9 +17,7 @@ with pkgs; [
   jetbrains.datagrip
 
   # security
-  yubioath-flutter
   keepassxc
-  cryptomator
 
   # frameworks
   jdk24
