@@ -23,7 +23,7 @@
 
       # security
       "1password"
-      "yubioath-flutter"
+      "yubico-authenticator"
       "cryptomator"
     ];
     masApps = {};
