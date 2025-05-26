@@ -4,7 +4,7 @@
       # Modules
       ./modules/fonts.nix
       ./modules/hm.nix
-      ./modules/nix.nixd
+      ./modules/nix.nix
       ./modules/time.nix
       ./modules/users.nix
     ];

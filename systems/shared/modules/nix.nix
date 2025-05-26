@@ -1,6 +1,10 @@
 { username, platform, lib, ... }: {
   nix = {
-    enable = true;
+    # Nix daemon is disabled on darwin, because nix-darwin handles it's own.
+    enable = lib.mkMerge [
+      (lib.mkIf pkgs.stdenv.isLinux true)
+      (lib.mkIf pkgs.stdenv.isDarwin false)
+    ];
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
