@@ -75,7 +75,7 @@
       "srv-prod-1" = mkServer  "srv-prod-1";
     };
     darwinConfigurations = {
-      "smi-macbook" = mkDarwinMachine "smi-macbook";
+      "smi-mac" = mkDarwinMachine "smi-mac";
     };
   };
 }
