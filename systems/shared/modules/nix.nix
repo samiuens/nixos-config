@@ -1,4 +1,4 @@
-{ username, platform, lib, ... }: {
+{ username, platform, lib, pkgs, ... }: {
   nix = {
     # Nix daemon is disabled on darwin, because nix-darwin handles it's own.
     enable = lib.mkMerge [
