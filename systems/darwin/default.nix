@@ -8,6 +8,7 @@
 
       # Modules
       ./modules/brew.nix
+      ./modules/users.nix
 
       # System settings
       ./system/appearance.nix

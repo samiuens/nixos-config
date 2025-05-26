@@ -1,7 +1,7 @@
 { username, hostname, ...}: {
   users.users.${username} = {
-    home = "/home/${username}";
-    isNormalUser = true;
+    home = "/Users/${username}";
+    isHidden = false;
     extraGroups = [ "wheel" "networkmanager" ];
   };
 }
