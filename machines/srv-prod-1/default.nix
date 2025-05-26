@@ -1,7 +1,15 @@
 { hostname, ... }:
 
 let
-  services = [ "netdata" "traefik" "sabnzbd" "radarr" "sonarr" "jellyfin" ];
+  services = [ 
+    "netdata"
+    "traefik"
+    "sabnzbd"
+    "radarr"
+    "sonarr"
+    "jellyfin"
+    "jellyseerr"
+  ];
 in
 {
   imports = [
