@@ -7,11 +7,20 @@ if [ "$(uname)" == "Darwin" ]; then
 
   # command line tools
   echo "installing 'command line tools'."
-  xcode-select --install
+  if [[ -e /Library/Developer/CommandLineTools/usr/bin/git ]]; then
+    echo "'command line tools' already installed."
+  else
+    # This temporary file prompts the 'softwareupdate' utility to list the Command Line Tools
+    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+    PROD=$(softwareupdate -l | grep "\*.*Command Line" | tail -n 1 | sed 's/^[^C]* //')
+    softwareupdate -i "$PROD" --verbose
+    echo "successfully installed 'command line tools'".
+  fi
 
   # rosetta
   echo "installing 'rosetta'."
   softwareupdate --install-rosetta --agree-to-license
+  echo "successfully installed 'rosetta'".
 
   # determinate nix
   echo "installing nix..."
