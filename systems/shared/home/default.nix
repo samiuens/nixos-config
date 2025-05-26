@@ -2,7 +2,7 @@
   imports = [ ../../${system}/home ];
   home = {
     username = "${username}";
-    homeDirectory = lib.mkMerge [
+    homeDirectory = lib.mkDefault [
       (lib.mkIf pkgs.stdenv.isLinux "/home/${username}")
       (lib.mkIf pkgs.stdenv.isDarwin "/Users/${username}")
     ];
