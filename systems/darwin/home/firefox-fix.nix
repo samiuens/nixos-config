@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, lib, ... }: {
   home.activation.firefoxProfile = lib.hm.dag.entryAfter [ "writeBoundry" ] ''
     run mv ${config.home.homeDirectory}/Library/Application\ Support/Firefox/profiles.ini ${config.home.homeDirectory}/Library/Application\ Support/Firefox/profiles.hm
     run cp ${config.home.homeDirectory}/Library/Application\ Support/Firefox/profiles.hm ${config.home.homeDirectory}/Library/Application\ Support/Firefox/profiles.ini
