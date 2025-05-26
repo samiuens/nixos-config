@@ -31,6 +31,10 @@
 
       # utils
       "raycast"
+      "linearmouse"
+      "cleanshot"
+      "karabiner-elements"
+      "jordanbaird-ice"
     ];
     masApps = {};
   };
