@@ -44,4 +44,5 @@ with pkgs; [
   just
   statix
   tmux
+  tailscale
 ]
