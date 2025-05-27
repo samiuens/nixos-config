@@ -7,6 +7,6 @@
     services.${name} = {
       enable = true;
       authKeyFile = config.sops.secrets."tailscale/auth-key".path;
-      useRoutingFeatures = "server";
+      useRoutingFeatures = "client";
     };
   }
