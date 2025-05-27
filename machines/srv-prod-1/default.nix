@@ -3,6 +3,7 @@
 let
   services = [ 
     "netdata"
+    "tailscale"
     "traefik"
     "sabnzbd"
     "radarr"
