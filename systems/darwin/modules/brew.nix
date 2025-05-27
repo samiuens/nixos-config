@@ -24,6 +24,7 @@
       
       # development
       "trae"
+      "orbstack"
 
       # security
       "1password"
