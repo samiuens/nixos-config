@@ -37,6 +37,7 @@
       "cleanshot"
       "karabiner-elements"
       "jordanbaird-ice"
+      "tailscale"
     ];
     masApps = {};
   };
