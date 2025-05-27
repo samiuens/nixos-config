@@ -9,7 +9,9 @@
       cleanup = "zap";
     };
     taps = [];
-    brews = [];
+    brews = [
+      "openssh"
+    ];
     casks = [
       # create
       "obsidian"
