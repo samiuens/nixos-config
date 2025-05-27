@@ -14,6 +14,7 @@
       # create
       "obsidian"
       "anki"
+      "google-drive"
 
       # consume
       "firefox"
