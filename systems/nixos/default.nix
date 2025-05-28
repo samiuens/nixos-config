@@ -8,6 +8,7 @@
 
       # Hardware
       ./hardware/bluetooth.nix
+      ./hardware/fans.nix
       ./hardware/printing.nix
       ./hardware/sound.nix
 
