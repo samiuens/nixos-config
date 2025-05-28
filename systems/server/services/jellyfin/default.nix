@@ -18,7 +18,7 @@
     volumes = [
       "${volumePath}/config:/config"
       "${volumePath}/cache:/cache"
-      "/mnt/media/media:/media"
+      "/mnt/media/media:/media:ro"
     ];
     labels = {
       "traefik.enable" = "true";
