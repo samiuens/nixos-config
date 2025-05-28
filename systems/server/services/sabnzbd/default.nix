@@ -25,9 +25,7 @@
     };
     volumes = [
       "${volumePath}/config:/config"
-      "${volumePath}/downloads/incomplete:/incomplete-downloads"
-      "${volumePath}/downloads/complete:/downloads"
-      "/mnt/media:/mnt/media"
+      "/mnt/data/usenet:/data/usenet"
     ];
     labels = {
       "traefik.enable" = "true";

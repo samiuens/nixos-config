@@ -17,8 +17,7 @@
     };
     volumes = [
       "${volumePath}/data:/config"
-      "/mnt/media/media/movies:/movies"
-      "/mnt/media/downloads/movies:/mnt/media/downloads/movies"
+      "/mnt/data:/data"
     ];
     labels = {
       "traefik.enable" = "true";
