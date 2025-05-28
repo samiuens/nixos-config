@@ -8,6 +8,7 @@ let
     "sabnzbd"
     "radarr"
     "sonarr"
+    "bazarr"
     "jellyfin"
     "jellyseerr"
   ];
