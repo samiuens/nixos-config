@@ -3,6 +3,7 @@
     name = "homepage";
     image = "ghcr.io/gethomepage/homepage:latest";
     domain = "home.${vars.domain}";
+    volumePath = "/srv/${name}";
   in {
     # Use Docker as the container backend
     virtualisation.oci-containers.backend = "docker";
@@ -11,7 +12,7 @@
     virtualisation.oci-containers.containers."${name}" = {
       image = "${image}";
       volumes = [
-        "${homepageSettings}:/app/config/settings.yaml"
+        "${volumePath}:/app/config"
         "/var/run/docker.sock:/var/run/docker.sock:ro"
       ];
       environment = {

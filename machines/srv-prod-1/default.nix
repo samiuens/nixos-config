@@ -5,6 +5,7 @@ let
     "netdata"
     "tailscale"
     "traefik"
+    "homepage"
     "sabnzbd"
     "radarr"
     "sonarr"
