@@ -2,13 +2,7 @@
   let 
     name = "homepage";
     image = "ghcr.io/gethomepage/homepage:latest";
-    domain = "home.${hostname}.${vars.domain}";
-    
-    # Container files
-    homepageSettings = pkgs.writeTextFile {
-      name = "settings.yaml";
-      text = builtins.readFile ./settings.yaml;
-    };
+    domain = "home.${vars.domain}";
   in {
     # Use Docker as the container backend
     virtualisation.oci-containers.backend = "docker";
@@ -21,7 +15,7 @@
         "/var/run/docker.sock:/var/run/docker.sock:ro"
       ];
       environment = {
-        #HOMEPAGE_ALLOWED_HOSTS = "${domain}";
+        HOMEPAGE_ALLOWED_HOSTS = "${domain}";
       };
       labels = {
         "traefik.enable" = "true";
