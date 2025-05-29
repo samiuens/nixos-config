@@ -27,5 +27,5 @@
 
       # Applications
       ../shared/apps/1password.nix
-    ] ++ lib.optional work ./work;
+    ];
 }
