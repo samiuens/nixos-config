@@ -3,8 +3,11 @@
     [
       # Applications
       ../../shared/apps/kitty.nix
+      
+      ../apps/aerospace
+      ../apps/karabiner
+      ../apps/linearmouse
       # Configs
-      ../gnome/config.nix
       ../../shared/config/shell
     ];
   home.packages = with pkgs; [
