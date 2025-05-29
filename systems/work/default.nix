@@ -1,4 +1,6 @@
 { system, ...}: {
-  # Modules
-  ./modules/users-${system}.nix
+  imports =
+    [
+      ./modules/users-${system}.nix
+    ];
 }
