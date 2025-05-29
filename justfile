@@ -1,10 +1,10 @@
 # Deploy changes for local machine
-default:
+default method='switch':
   #!/usr/bin/env sh
   if [ "$(uname)" == "Darwin" ]; then
-    sudo darwin-rebuild switch --flake ".#"
+    sudo darwin-rebuild {{method}} --flake ".#"
   else
-    sudo nixos-rebuild switch --flake ".#"
+    sudo nixos-rebuild {{method}} --flake ".#"
   fi
 
 # Deploy changes for remote host
