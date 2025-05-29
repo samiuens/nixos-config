@@ -4,6 +4,7 @@
       # Applications
       ../../shared/apps/firefox.nix
       ../../shared/apps/kitty.nix
+      ../../shared/apps/syncthing.nix
       
       ../apps/aerospace
       ../apps/karabiner
