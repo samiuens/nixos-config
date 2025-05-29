@@ -3,5 +3,4 @@
     home = "/Users/${username}";
     isHidden = false;
   };
-  system.primaryUser = "${username}";
 }
