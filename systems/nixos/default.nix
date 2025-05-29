@@ -18,6 +18,7 @@
       ./modules/networking.nix
       ./modules/nix.nix
       ./modules/security.nix
+      ./modules/tailscale.nix
       ./modules/users.nix
 
       # Gnome
