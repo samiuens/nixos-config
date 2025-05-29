@@ -17,5 +17,6 @@
     awscli2
     nodejs_24
     typescript
+    signal-desktop
   ];
 }

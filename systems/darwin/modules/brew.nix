@@ -18,6 +18,9 @@
       "anki"
       "google-drive"
 
+      # communication
+      "signal"
+      
       # consume
       "firefox"
 
