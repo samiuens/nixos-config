@@ -9,7 +9,6 @@ shared-packages ++ [
 
   # hosting
   termius
-  tailscale
   trayscale
 
   # security
