@@ -19,5 +19,9 @@
     awscli2
     nodejs_24
     typescript
+    mkcert
+    podman
+    podman-compose
+    aerospace
   ];
 }
