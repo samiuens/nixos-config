@@ -1,4 +1,4 @@
-{ inputs, hostname, ... }: {
+{ inputs, hostname, work, lib, ... }: {
   imports =
     [
       #inputs.sops-nix.nixosModules.sops
@@ -27,5 +27,5 @@
 
       # Applications
       ../shared/apps/1password.nix
-    ];
+    ] ++ lib.optional work ../work;
 }

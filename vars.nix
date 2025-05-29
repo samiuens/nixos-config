@@ -4,4 +4,7 @@
   server = {
     timezone = "Europe/Berlin";
   };
+  workProfile = {
+    username = "samiarda";
+  };
 }
