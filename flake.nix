@@ -30,7 +30,7 @@
   let
     vars = import ./vars.nix;
   
-  mkMachine = name: dualboot:
+  mkMachine = name: workEnabled:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
@@ -39,11 +39,11 @@
           username = "samiuensay";
           platform = "x86_64-linux";
           system = "nixos";
-          dualBoot = dualboot;
+          work = workEnabled;
         };
       modules = [ ./systems/nixos ];
     };
-  mkDarwinMachine = name:
+  mkDarwin = name: workEnabled:
     nix-darwin.lib.darwinSystem {
       specialArgs = 
         {
@@ -52,6 +52,7 @@
           username = "samiuensay";
           platform = "aarch64-darwin";
           system = "darwin";
+          work = workEnabled;
         };
       modules = [ ./systems/darwin ];
     };
@@ -70,12 +71,15 @@
     };
   in {
     nixosConfigurations = {
-      # Machine name, type,    hostname,    (dualboot?)
+      # Machines: "hostname" = mkMachine "hostname" workProfile?;
       "smi-nixos"  = mkMachine "smi-nixos" true;
+
+      # Servers: "hostname" = mkServer "hostname";
       "srv-prod-1" = mkServer  "srv-prod-1";
     };
     darwinConfigurations = {
-      "smi-mac" = mkDarwinMachine "smi-mac";
+      # Macs: "hostname" = mkDarwin "hostname" workProfile?;
+      "smi-mac" = mkDarwin "smi-mac" true;
     };
   };
 }

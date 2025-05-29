@@ -1,4 +1,4 @@
-{ inputs, hostname, ... }: {
+{ inputs, hostname, work, lib, ... }: {
   imports =
     [
       #inputs.sops-nix.nixosModules.sops
