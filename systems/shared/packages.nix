@@ -23,10 +23,6 @@ with pkgs; [
   nodejs_24
   typescript
 
-  # cli
-  nest-cli
-  awscli2
-
   # package managers (node-specific)
   corepack_24
   pnpm
