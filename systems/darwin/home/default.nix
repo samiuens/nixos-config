@@ -16,8 +16,6 @@
       ../../shared/config/gpg
       # Quirks
       ./firefox-fix.nix
-      # System settings
-      ../system
     ];
   home.packages = pkgs.callPackage ../packages.nix {};
 }
