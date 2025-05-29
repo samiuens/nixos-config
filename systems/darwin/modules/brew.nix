@@ -10,6 +10,7 @@
     };
     taps = [];
     brews = [
+      "mas"
       "openssh"
     ];
     casks = [
@@ -44,7 +45,9 @@
       "jordanbaird-ice"
       "tailscale"
     ];
-    masApps = {};
+    masApps = {
+      "Bitwarden" = 1352778147;
+    };
   };
   
   nix-homebrew = {

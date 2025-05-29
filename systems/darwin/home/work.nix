@@ -12,7 +12,6 @@
     ];
   home.packages = with pkgs; [
     google-chrome
-    bitwarden-desktop
     code-cursor
     jetbrains.datagrip
     gitkraken
