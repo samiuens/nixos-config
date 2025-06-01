@@ -29,7 +29,6 @@
       "termius"
       
       # development
-      "trae"
       "orbstack"
 
       # security
