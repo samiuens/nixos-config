@@ -83,9 +83,9 @@ outer.right = 15
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
-cmd-ctrl-alt-shift-q = 'resize smart -50'
-cmd-ctrl-alt-shift-e = 'resize smart +50'
-cmd-ctrl-alt-shift-f = 'fullscreen'
+cmd-shift-q = 'resize smart -50'
+cmd-shift-e = 'resize smart +50'
+cmd-shift-f = 'fullscreen'
 
 cmd-shift-h = 'focus left'
 cmd-shift-j = 'focus down'
