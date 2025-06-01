@@ -23,6 +23,8 @@
           (extension "web-clipper-obsidian" "clipper@obsidian.md")
           (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
+          (extension "darkreader" "addon@darkreader.org")
+          (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
         ];
     };
     profiles.samiuensay =
