@@ -30,6 +30,7 @@
       
       # development
       "orbstack"
+      "arduino-ide"
 
       # security
       "1password"
