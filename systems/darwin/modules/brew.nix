@@ -19,6 +19,9 @@
       "anki"
       "google-drive"
 
+      "microsoft-word"
+      "microsoft-excel"
+      "microsoft-powerpoint"
       # communication
       "signal"
       
