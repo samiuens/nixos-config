@@ -1,6 +1,8 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = 
     [
+      # Inputs
+      inputs.nixvim.homeModules.nixvim
       # Applications
       ../../shared/apps/firefox.nix
       ../../shared/apps/kitty.nix
