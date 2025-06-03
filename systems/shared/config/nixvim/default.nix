@@ -1,11 +1,10 @@
-let
-  plugins = [
-    "telescope"
+{ pkgs, ... }: {
+  imports = [ ./plugins ];
+  home.packages = with pkgs; [
+    ripgrep
+    fd
   ];
-in
-{
-  imports = [] ++ builtins.map (pluginName: ./plugins/${pluginName}) plugins;
   programs.nixvim = {
-    enable = true;
-  };
+    enable = true;   
+  }; 
 }
