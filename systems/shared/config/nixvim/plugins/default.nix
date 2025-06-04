@@ -18,6 +18,7 @@
       ./ui/noice.nix
       ./ui/nui.nix
       ./ui/snacks.nix
+      ./ui/trouble.nix
 
       # Utils
       ./utils/mini.nix
