@@ -5,7 +5,7 @@
     fd
   ];
   programs.nixvim = {
-    enable = true;   
+    enable = true;
+    colorschemes.gruvbox.enable = true;
   };
-  colorschemes.gruvbox.enable = true;
 }
