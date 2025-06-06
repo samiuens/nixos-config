@@ -7,6 +7,9 @@ shared-packages ++ [
   obsidian
   anki
 
+  # communication
+  vencord
+
   # hosting
   termius
   trayscale

@@ -5,9 +5,6 @@ with pkgs; [
   # create
   drawio
 
-  # communication
-  discord
-
   # development
   gitkraken
   code-cursor
