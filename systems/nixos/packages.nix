@@ -8,7 +8,7 @@ shared-packages ++ [
   anki
 
   # communication
-  vencord
+  vesktop
 
   # hosting
   termius
