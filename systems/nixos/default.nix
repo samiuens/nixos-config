@@ -14,6 +14,7 @@
 
       # Modules
       ./modules/boot.nix
+      ./modules/docker.nix
       ./modules/locale.nix
       ./modules/networking.nix
       ./modules/nix.nix
