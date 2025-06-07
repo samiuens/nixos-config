@@ -1,4 +1,4 @@
-{ pkgs, lib, hostname, ... }: {
+{ pkgs, lib, hostConfig, ... }: {
   programs.firefox = {
     enable = true;
     package = lib.mkMerge [
@@ -30,7 +30,7 @@
     profiles.samiuensay =
       let profileSettings = {
         # firefox sync
-        "identity.fxaccounts.account.device.name" = hostname;
+        "identity.fxaccounts.account.device.name" = hostConfig.hostname;
 
         # native firefox vertical tabs
         "sidebar.revamp" = true;
@@ -65,7 +65,7 @@
         "network.http.pacing.requests.enabled" = false;
         "network.dnsCacheExpiration" = 3600;
         "network.ssl_tokens_cache_capacity" = 10240;
-        "network.trr.uri" = "https://dns.nextdns.io/4233b4/${hostname}";
+        "network.trr.uri" = "https://dns.nextdns.io/4233b4/${hostConfig.hostname}";
         "network.trr.mode" = 3;
 
         # SPECULATIVE LOADING

@@ -16,6 +16,7 @@
     variant = "mac";
   };
   console.keyMap = "de";
+  
   # Quirk for fixing time with windows dualboot
   time.hardwareClockInLocalTime = true;
 }

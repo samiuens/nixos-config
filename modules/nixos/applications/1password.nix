@@ -1,7 +1,7 @@
-{ username, ... }: {
+{ hostConfig, ... }: {
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = [ "${username}" ];
+    polkitPolicyOwners = [ "${hostConfig.user.username}" ];
   };
 }
