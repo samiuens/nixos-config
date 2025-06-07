@@ -24,8 +24,10 @@
 
       # Applications
       applications = {
-        onepassword = true;
         coolercontrol = true;
+        onepassword = true;
+      };
+      hmApplications = {
         firefox = true;
         kitty = true;
       };
