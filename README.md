@@ -1,15 +1,21 @@
 # ⚙️ samiarda's nix configuration
 [![nixos 24.11](https://img.shields.io/badge/NixOS-24.11-blue.svg?&logo=NixOS&logoColor=white)](https://nixos.org)
+![commit activity](https://img.shields.io/github/commit-activity/w/samiuens/nixos-config)
+![mit license](https://img.shields.io/github/license/samiuens/nixos-config)
 
 ## 💫 Highlights
-This repo contains the Nix configurations for my homelab servers, desktop and MacBook.
+This repo contains the Nix configurations for my desktop, macbook pro (m1) and my homelab servers.
 
 - ❄️ Nix flakes handles dependencies and packages
-- 🏠 [home-manager](https://github.com/nix-community/home-manager) manages dotfiles and applications
-- 🍎 [nix-darwin](https://github.com/LnL7/nix-darwin) for Mac configuration
-- 🤫 [sops-nix](https://github.com/Mic92/sops-nix) for Secret management
+- 🏠 [home-manager](https://github.com/nix-community/home-manager) manages dotfiles
+- 🍎 [nix-darwin](https://github.com/LnL7/nix-darwin) for mac configuration
+- 🤫 [sops-nix](https://github.com/Mic92/sops-nix) for encrypted secret management
 - ⚡️ `justfile` contains useful aliases for many frequent and complicated commands
 - ♻️ Automatic trash collection managed through `nix-gc`
+- 🔑 Secure boot configuration *(coming soon...)*
+- 🔒 Automatic Certifcate registration and renewal by `traefik`
+- 🧩 Tailscale, Jellyfin, Netdata, among other self-hosted applications
+- 🖼️ Configuration of the desired desktop environment on nixOS
 
 ## 👀 Overview
 |   hostname   |         system          |         cpu         | ram  |         gpu         | role |  os  | status |
@@ -20,11 +26,20 @@ This repo contains the Nix configurations for my homelab servers, desktop and Ma
 
 ## 🆕 Getting started
 
-### macOS
-### NixOS
+> [!NOTE]
+> The script needs to be run as sudo or the user needs sudo permissions.
+```console
+git clone git@github.com:samiuens/nixos-config.git && cd nixos-config
+chmod +x install.sh && ./install.sh
+```
 
-## 🛠️ Useful commands
-Use `just` to access the aliases below:
+### macOS
+- On macOS, the script will install `nix` using the [Determinate Nix Installer].
+- After running the script, you have to manually run the `nix-darwin` installer with the hostname, corresponding to the config, you want to apply.
+- Also some settings are not covered by the nix configuration as they aren't available (see [Post Installation](#🧩-post-installation))
+
+### NixOS
+- On NixOS, no extra steps are needed, as the `nix` package manager is already installed.
 
 ## 🧩 Post installation
 
@@ -32,3 +47,4 @@ Use `just` to access the aliases below:
 [AMD Ryzen 7 2700X]: https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-2000-series/amd-ryzen-7-2700x.html
 [XFX Radeon RX 6600]: https://www.xfxforce.com/shop/xfx-speedster-swft-210-amd-radeon-tm-rx-6600-core
 [Macbook Pro M1 13"]: https://support.apple.com/en-us/111893
+[Determinate Nix Installer]: https://github.com/DeterminateSystems/nix-installer
