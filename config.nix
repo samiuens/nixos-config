@@ -7,6 +7,8 @@
       # System information
       hostname = "smi-nixos";
       platform = "x86_64-linux";
+      os = "nixos";
+      
       # Desktop
 
       desktopEnvironment = "gnome";
@@ -33,6 +35,13 @@
       services = {
         syncthing = true;
         tailscale = true;
+      };
+      # Configs
+      configs = {
+        shell = true;
+        git = true;
+        gpg = true;
+        ssh = true;
       };
     };
   };
