@@ -5,8 +5,9 @@ in
 {
   imports =
     []
-    ++ (moduleConfig.loadHostConfigModules hostConfig.hmApplications ./applications)
-    ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services);
+    ++ (moduleConfig.loadHostConfigModules hostConfig.applications ./applications)
+    ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services)
+    ++ (moduleConfig.loadHostConfigModules hostConfig.configs ./configs);
 
 
   home = {
@@ -16,6 +17,7 @@ in
       (lib.mkIf pkgs.stdenv.isDarwin "/Users/${hostConfig.user.username}")
     ];
     stateVersion = "25.05";
+    packages = pkgs.callPackage ../../packages/${hostConfig.os}.nix {};
   };
   programs.home-manager.enable = true;
 }
