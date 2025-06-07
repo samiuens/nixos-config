@@ -33,18 +33,18 @@
 
   outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, nixvim, nix-darwin, nix-homebrew }: 
   let
-    config = import ./config.nix;
+    myConfig = import ./config.nix;
   
   mkMachine = configName:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
-          inherit inputs config;
-          hostConfig = config.hosts."${configName}";
+          inherit inputs myConfig;
+          hostConfig = myConfig.hosts."${configName}";
         };
       modules = [ ./modules/nixos ];
     };
-  mkDarwin = hostname: platform:
+  /*mkDarwin = hostname: platform:
     nix-darwin.lib.darwinSystem {
       specialArgs = 
         {
@@ -62,15 +62,14 @@
           username = "samiarda";
         };
       modules = [ ./systems/server ];
-    };
+    };*/
   in {
     nixosConfigurations = {
-      "smi-nixos"  = mkMachine "smi-nixos";
-      "srv-prod-1" = mkServer  "srv-prod-1" "x86_64-linux";
+      "smi-nixos" = mkMachine "smi-nixos";
+      #"srv-prod-1" = mkServer  "srv-prod-1" "x86_64-linux";
     };
     darwinConfigurations = {
-      # Macs: "hostname" = mkDarwin "hostname" workProfile?;
-      "smi-mac" = mkDarwin "smi-mac" "aarch64-darwin";
+      # "smi-mac" = mkDarwin "smi-mac" "aarch64-darwin";
     };
   };
 }

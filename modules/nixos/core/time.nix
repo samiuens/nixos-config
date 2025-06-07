@@ -1,3 +1,3 @@
-{ config, ... }: {
-  time.timeZone = config.timezone;
+{ myConfig, ... }: {
+  time.timeZone = myConfig.timezone;
 }

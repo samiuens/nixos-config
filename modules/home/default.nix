@@ -1,4 +1,4 @@
-{ pkgs, lib, config, hostConfig, ... }: {
+{ pkgs, lib, myConfig, hostConfig, ... }: {
   home = {
     username = "${hostConfig.user.username}";
     homeDirectory = lib.mkDefault [

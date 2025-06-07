@@ -1,7 +1,7 @@
 { 
   pkgs,
   lib,
-  config,
+  myConfig,
   hostConfig,
   ...
 }: {
@@ -11,7 +11,7 @@
     users.${hostConfig.user.username} = import ../../home { inherit pkgs lib; };
     backupFileExtension = "hm-backup";
     extraSpecialArgs = {
-      inherit config hostConfig;
+      inherit myConfig hostConfig;
     };
   };
 }
