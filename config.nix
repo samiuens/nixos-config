@@ -10,7 +10,6 @@
       os = "nixos";
       
       # Desktop
-
       desktopEnvironment = "gnome";
       
       # Personal user
@@ -42,6 +41,33 @@
         git = true;
         gpg = true;
         ssh = true;
+      };
+    };
+  };
+
+  servers = {
+    "srv-prod-1" = {
+      # Host information
+      hostname = "srv-prod-1";
+      platform = "x86_64-linux";
+
+      # User
+      user = {
+        name = "Sami Arda Ünsay";
+        username = "samiarda";
+      };
+
+      services = {
+        netdata = true;
+        tailscale = true;
+        traefik = true;
+        homepage = false; # TODO: outstanding configuration
+        sabnzbd = true;
+        radarr = true;
+        sonarr = true;
+        bazarr = true;
+        jellyfin = true;
+        jellyseerr = true;
       };
     };
   };

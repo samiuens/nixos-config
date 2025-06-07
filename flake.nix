@@ -52,21 +52,21 @@
           username = "samiuensay";
         };
       modules = [ ./systems/darwin ];
-    };
+    };*/
   
-  mkServer = hostname: platform:
+  mkMachine = configName:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
-          inherit inputs config hostname platform;
-          username = "samiarda";
+          inherit inputs myConfig;
+          hostConfig = myConfig.servers."${configName}";
         };
-      modules = [ ./systems/server ];
-    };*/
+      modules = [ ./modules/server ];
+    };
   in {
     nixosConfigurations = {
-      "smi-nixos" = mkMachine "smi-nixos";
-      #"srv-prod-1" = mkServer  "srv-prod-1" "x86_64-linux";
+      "smi-nixos"  = mkMachine "smi-nixos";
+      "srv-prod-1" = mkServer  "srv-prod-1";
     };
     darwinConfigurations = {
       # "smi-mac" = mkDarwin "smi-mac" "aarch64-darwin";
