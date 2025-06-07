@@ -1,6 +1,6 @@
 { pkgs, lib, myConfig, hostConfig, ... }:
 let
-  moduleConfig = import ../../lib/loadHostConfigModules.nix.nix { inherit lib; };
+  moduleConfig = import ../../lib/loadHostConfigModules.nix { inherit lib; };
 in
 {
   imports =
