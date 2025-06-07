@@ -1,4 +1,14 @@
-{ pkgs, lib, myConfig, hostConfig, ... }: {
+{ pkgs, lib, myConfig, hostConfig, ... }:
+let
+  moduleConfig = import ../../lib/loadHostConfigModules.nix.nix { inherit lib; };
+in
+{
+  imports =
+    []
+    ++ (moduleConfig.loadHostConfigModules hostConfig.hmApplications ./applications)
+    ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services);
+
+
   home = {
     username = "${hostConfig.user.username}";
     homeDirectory = lib.mkDefault [
