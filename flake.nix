@@ -54,7 +54,7 @@
       modules = [ ./systems/darwin ];
     };*/
   
-  mkMachine = configName:
+  mkServer = configName:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
