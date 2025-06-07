@@ -1,24 +1,8 @@
-{ hostname, ... }:
-
-let
-  services = [ 
-    "netdata"
-    "tailscale"
-    "traefik"
-    "homepage"
-    "sabnzbd"
-    "radarr"
-    "sonarr"
-    "bazarr"
-    "jellyfin"
-    "jellyseerr"
-  ];
-in
-{
+{ hostname, ... }: {
   imports = [
     ./disk-config.nix
     ./hardware-configuration.nix
-  ] ++ builtins.map (serviceName: ../../systems/server/services/${serviceName}) services;
+  ];
 
   # Mount external hard drive for data storage
   fileSystems."/mnt/data" = {
@@ -30,6 +14,5 @@ in
       "nofail"
     ];
   };
-
   system.stateVersion = "24.11";
 }
