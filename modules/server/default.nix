@@ -6,6 +6,8 @@ in
   imports =
     [
       # Flakes and machine-specific import
+      inputs.disko.nixosModules.disko
+      inputs.sops-nix.nixosModules.sops
       inputs.home-manager.nixosModules.home-manager
       ../../hosts/${hostConfig.hostname}
 
