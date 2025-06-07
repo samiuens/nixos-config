@@ -1,6 +1,7 @@
 { lib, inputs, config, hostConfig, ... }:
 let
   apps = import ../../lib/loadHostConfigApplications.nix { inherit lib; };
+in
 {
   imports =
     [

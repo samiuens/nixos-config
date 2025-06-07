@@ -1,4 +1,4 @@
-{
+{lib, ... }: {
   loadHostConfigApplications = hostConfig: folderPath:
     let
       appModulePaths = lib.filter
