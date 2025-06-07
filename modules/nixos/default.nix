@@ -1,6 +1,6 @@
-{ lib, inputs, config, hostConfig, ... }:
+{ lib, inputs, myConfig, hostConfig, ... }:
 let
-  apps = import ../../lib/loadHostConfigApplications.nix { inherit lib; };
+  moduleConfig = import ../../lib/loadHostConfigModules.nix.nix { inherit lib; };
 in
 {
   imports =
@@ -30,8 +30,5 @@ in
         then ./desktop-environment/hyprland*/
         else throw "unknown desktop environment (${hostConfig.hostname}): ${hostConfig.desktopEnvironment}"
       )
-
-      # Applications
-      (apps.loadHostConfigApplications hostConfig.applications ./applications)
-    ];
+    ] ++ (moduleConfig.loadHostConfigModules hostConfig.applications ./applications);
 }
