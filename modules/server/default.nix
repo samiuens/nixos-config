@@ -10,10 +10,18 @@ in
       ../../hosts/${hostConfig.hostname}
 
       # Core
-      ./core/
+      ./core/networking.nix
+      ./core/nix.nix
+      ./core/security.nix
+      ./core/time.nix
 
       # Users
       ./users
+
+      # Services
+      ./services/docker.nix
+      ./services/sops.nix
+      ./services/ssh.nix
     ]
     ++ (moduleConfig.loadHostConfigModules hostConfig.services ../../services);
 }
