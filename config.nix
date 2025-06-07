@@ -24,7 +24,7 @@
 
       # Applications
       applications = {
-        _1password = true;
+        onepassword = true;
         coolercontrol = true;
         firefox = true;
         kitty = true;
