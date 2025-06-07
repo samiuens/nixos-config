@@ -57,6 +57,11 @@
         username = "samiarda";
       };
 
+      configs = {
+        shell = true;
+        git = true;
+      };
+
       services = {
         netdata = true;
         tailscale = true;
