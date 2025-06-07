@@ -1,7 +1,7 @@
 # ⚙️ samiarda's nix configuration
 [![nixos 24.11](https://img.shields.io/badge/NixOS-24.11-blue.svg?&logo=NixOS&logoColor=white)](https://nixos.org)
-![commit activity](https://img.shields.io/github/commit-activity/w/samiuens/nixos-config)
-![mit license](https://img.shields.io/github/license/samiuens/nixos-config)
+[![commit activity](https://img.shields.io/github/commit-activity/w/samiuens/nixos-config)](https://github.com/samiuens/nixos-config/commits/stage/)
+[![mit license](https://img.shields.io/github/license/samiuens/nixos-config)](LICENSE)
 
 ## 💫 Highlights
 This repo contains the Nix configurations for my desktop, macbook pro (m1) and my homelab servers.
@@ -40,6 +40,16 @@ chmod +x install.sh && ./install.sh
 
 ### NixOS
 - On NixOS, no extra steps are needed, as the `nix` package manager is already installed.
+- Run the config switch with the following command followed with the hostname corresponding tot he config, you want to apply.
+- `sudo nixos-rebuild boot --flake ".#"`
+- Restart the machine and you're ready to go!
+
+### Servers
+- Boot the [nixos minial iso image](https://nixos.org/download/) on the machine
+- Generate the ssh keys on the both yubikeys for authentication by running `just sshkey <hostname> <sn> <keylabel> <copy: (y/n)>`
+- The keys are getting automatically generated and put into the right directory and optionally copied to the local machine.
+- Run the provision process with the following command: `./provision.sh`. The script guides you through the installation process.
+- Lastly, add the host to your ssh config with the right hostname, username and key file path.
 
 ## 🧩 Post installation
 
