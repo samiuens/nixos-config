@@ -1,4 +1,6 @@
 { pkgs, hostConfig, ... }: {
+  imports = [ ./hm.nix ];
+  
   users.users.${hostConfig.user.username} = {
     description = "${hostConfig.user.name}";
     home = "/home/${hostConfig.user.username}";
