@@ -33,58 +33,44 @@
 
   outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, nixvim, nix-darwin, nix-homebrew }: 
   let
-    vars = import ./vars.nix;
+    config = import ./config.nix;
   
-  mkMachine = name: workEnabled:
+  mkMachine = configName:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
-          inherit inputs vars;
-          hostname = name;
-          username = "samiuensay";
-          platform = "x86_64-linux";
-          system = "nixos";
-          work = workEnabled;
+          inherit inputs config;
+          hostConfig = config.hosts."${configName}";
         };
-      modules = [ ./systems/nixos ];
+      modules = [ ./modules/nixos ];
     };
-  mkDarwin = name: workEnabled:
+  mkDarwin = hostname: platform:
     nix-darwin.lib.darwinSystem {
       specialArgs = 
         {
-          inherit inputs vars;
-          hostname = name;
+          inherit inputs config hostname platform;
           username = "samiuensay";
-          platform = "aarch64-darwin";
-          system = "darwin";
-          work = workEnabled;
         };
       modules = [ ./systems/darwin ];
     };
   
-  mkServer = name:
+  mkServer = hostname: platform:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
-          inherit inputs vars;
-          hostname = name;
+          inherit inputs config hostname platform;
           username = "samiarda";
-          platform = "x86_64-linux";
-          system = "server";
         };
       modules = [ ./systems/server ];
     };
   in {
     nixosConfigurations = {
-      # Machines: "hostname" = mkMachine "hostname" workProfile?;
-      "smi-nixos"  = mkMachine "smi-nixos" true;
-
-      # Servers: "hostname" = mkServer "hostname";
-      "srv-prod-1" = mkServer  "srv-prod-1";
+      "smi-nixos"  = mkMachine "smi-nixos";
+      "srv-prod-1" = mkServer  "srv-prod-1" "x86_64-linux";
     };
     darwinConfigurations = {
       # Macs: "hostname" = mkDarwin "hostname" workProfile?;
-      "smi-mac" = mkDarwin "smi-mac" true;
+      "smi-mac" = mkDarwin "smi-mac" "aarch64-darwin";
     };
   };
 }
