@@ -24,7 +24,8 @@
             in
             import modulePath
           )
-          else lib.warn "WARN: The module '${moduleName}' is activated in the config, but the file '${folderPath}/${moduleName}.nix' doesnt exist!" { }
+          else {}
+          #else lib.warn "WARN: The module '${moduleName}' is activated in the config, but the file '${folderPath}/${moduleName}.nix' doesnt exist!" { }
         else
           { }
       ) hostConfig;
