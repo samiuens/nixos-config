@@ -1,4 +1,6 @@
 { pkgs, lib, hostConfig, ... }: {
+  imports = [] ++ (lib.optional pkgs.stdenv.isDarwin ./macos-fix.nix);
+
   programs.firefox = {
     enable = true;
     package = lib.mkMerge [
