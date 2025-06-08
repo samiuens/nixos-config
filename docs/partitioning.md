@@ -7,7 +7,7 @@
 | ------ | ----------- | ---------------- | ----------- | -------- | :----------: |
 | `EFI`  |    fat32    | 1024MB           | `/boot/efi` |  `boot`  |      ❌      |
 | `swap` |  linuxswap  | *see hint*[^1]   |     none    |  `swap`  |      ✅      |
-| `data` |    btrfs    | remaining space  |     `/`     |   `/`    |      ✅      |
+|  `os`  |    btrfs    | remaining space  |     `/`     |   `/`    |      ✅      |
 
 ## Recommended size for the swap partition
 ![Screenshot of a table showing the recommended size of the swap partition.](/.github/assets/swap-partition-size.png)
