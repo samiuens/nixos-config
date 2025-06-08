@@ -1,4 +1,5 @@
 # Folder structure
+```
 .
 ├── docs/
 │   └── ...
@@ -19,3 +20,4 @@
 │   └── public/
 └── services/
     └── ...
+```
