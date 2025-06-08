@@ -1,10 +1,10 @@
-{ hostname, ... }: {
+{ hostConfig, ... }: {
   networking = {
-    computerName = "${hostname}";
-    hostName = "${hostname}";
-    localHostName = "${hostname}";
+    computerName = "${hostConfig.hostname}";
+    hostName = "${hostConfig.hostname}";
+    localHostName = "${hostConfig.hostname}";
   };
   system.defaults.smb = {
-    NetBIOSName = "${hostname}";
+    NetBIOSName = "${hostConfig.hostname}";
   };
 }
