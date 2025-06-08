@@ -8,7 +8,7 @@ in
     ++ (moduleConfig.loadHostConfigModules hostConfig.applications ./applications)
     ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services)
     ++ (moduleConfig.loadHostConfigModules hostConfig.configs ./configs)
-    ++ (lib.optional hostConfig.os == "nixos" ./desktop/${hostConfig.desktopEnvironment});
+    ++ (lib.optional (hostConfig.os == "nixos") ./desktop/${hostConfig.desktopEnvironment});
 
 
   home = {
