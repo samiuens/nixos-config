@@ -44,7 +44,7 @@
         };
       modules = [ ./modules/nixos ];
     };
-  mkDarwin = hostname: platform:
+  mkDarwin = configName:
     nix-darwin.lib.darwinSystem {
       specialArgs = 
         {
