@@ -19,10 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
+    /*nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-    };    
+    };*/    
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -31,60 +31,45 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, nixvim, nix-darwin, nix-homebrew }: 
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, /*nixvim,*/ nix-darwin, nix-homebrew }: 
   let
-    vars = import ./vars.nix;
+    myConfig = import ./config.nix;
   
-  mkMachine = name: workEnabled:
+  mkMachine = configName:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
-          inherit inputs vars;
-          hostname = name;
-          username = "samiuensay";
-          platform = "x86_64-linux";
-          system = "nixos";
-          work = workEnabled;
+          inherit inputs myConfig;
+          hostConfig = myConfig.hosts."${configName}";
         };
-      modules = [ ./systems/nixos ];
+      modules = [ ./modules/nixos ];
     };
-  mkDarwin = name: workEnabled:
+  mkDarwin = configName:
     nix-darwin.lib.darwinSystem {
       specialArgs = 
         {
-          inherit inputs vars;
-          hostname = name;
-          username = "samiuensay";
-          platform = "aarch64-darwin";
-          system = "darwin";
-          work = workEnabled;
+          inherit inputs myConfig;
+          hostConfig = myConfig.hosts."${configName}";
         };
-      modules = [ ./systems/darwin ];
+      modules = [ ./modules/macos ];
     };
   
-  mkServer = name:
+  mkServer = configName:
     nixpkgs.lib.nixosSystem {
       specialArgs = 
         {
-          inherit inputs vars;
-          hostname = name;
-          username = "samiarda";
-          platform = "x86_64-linux";
-          system = "server";
+          inherit inputs myConfig;
+          hostConfig = myConfig.servers."${configName}";
         };
-      modules = [ ./systems/server ];
+      modules = [ ./modules/server ];
     };
   in {
     nixosConfigurations = {
-      # Machines: "hostname" = mkMachine "hostname" workProfile?;
-      "smi-nixos"  = mkMachine "smi-nixos" true;
-
-      # Servers: "hostname" = mkServer "hostname";
+      "smi-nixos"  = mkMachine "smi-nixos";
       "srv-prod-1" = mkServer  "srv-prod-1";
     };
     darwinConfigurations = {
-      # Macs: "hostname" = mkDarwin "hostname" workProfile?;
-      "smi-mac" = mkDarwin "smi-mac" true;
+      "smi-mac" = mkDarwin "smi-mac";
     };
   };
 }
