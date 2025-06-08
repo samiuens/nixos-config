@@ -7,9 +7,11 @@ in
     [
       # Flakes and machine-specific import
       inputs.home-manager.darwinModules.home-manager
+      inputs.nix-homebrew.darwinModules.nix-homebrew
       ../../hosts/${hostConfig.hostname}
 
       # Core
+      ./core/brew.nix
       ./core/nix.nix
       ./core/time.nix
 
