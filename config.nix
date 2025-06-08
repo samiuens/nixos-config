@@ -18,10 +18,10 @@
         username = "samiuensay";
       };
       # Work user
-      /*workUser = {
+      workUser = {
         name = "Sami Arda Ünsay";
         username = "samiarda";
-      };*/
+      };
 
       # Applications
       applications = {
@@ -56,10 +56,11 @@
         username = "samiuensay";
       };
       # Work user
-      /*workUser = {
+      workUser = {
+        enabled = true;
         name = "Sami Arda Ünsay";
         username = "samiarda";
-      };*/
+      };
 
       # Applications
       applications = {
