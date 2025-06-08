@@ -26,9 +26,9 @@ in
 
       # Desktop Environments
       (if hostConfig.desktopEnvironment == "gnome"
-        then ./desktop-environment/gnome
+        then ./desktop/gnome
         /*else if myConfig.databaseType == "hyprland"
-        then ./desktop-environment/hyprland*/
+        then ./desktop/hyprland*/
         else throw "unknown desktop environment (${hostConfig.hostname}): ${hostConfig.desktopEnvironment}"
       )
     ]
