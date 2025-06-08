@@ -66,7 +66,7 @@
       };
 
       services = {
-        netdata = true;
+        netdata = false;
         tailscale = true;
         traefik = true;
         homepage = false; # TODO: outstanding configuration
