@@ -17,11 +17,7 @@ in
       (lib.mkIf pkgs.stdenv.isDarwin "/Users/${hostConfig.user.username}")
     ];
     stateVersion = "25.05";
-    #packages = pkgs.callPackage ../../packages/${hostConfig.os}.nix {};
-    packages = lib.mkDefault [
-      (lib.mkIf pkgs.stdenv.isLinux pkgs.callPackage ../../packages/${hostConfig.os}.nix {})
-      (lib.mkIf pkgs.stdenv.isDarwin pkgs.callPackage ../../packages/${hostConfig.os}/packages.nix {})
-    ];
+    packages = pkgs.callPackage ../../packages/${hostConfig.os}/packages.nix {};
   };
   programs.home-manager.enable = true;
 }
