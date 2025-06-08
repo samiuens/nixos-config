@@ -20,7 +20,7 @@
       # Work user
       workUser = {
         enabled = true;
-        name = "Sami Arda Ünsay";
+        name = "samiarda";
         username = "samiarda";
       };
 
@@ -59,7 +59,7 @@
       # Work user
       workUser = {
         enabled = true;
-        name = "Sami Arda Ünsay";
+        name = "samiarda";
         username = "samiarda";
       };
 
