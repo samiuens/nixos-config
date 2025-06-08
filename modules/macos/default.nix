@@ -13,6 +13,7 @@ in
 
       # Core
       ./core/brew.nix
+      ./core/fonts.nix
       ./core/nix.nix
       ./core/time.nix
 

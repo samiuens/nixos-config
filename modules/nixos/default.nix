@@ -14,6 +14,7 @@ in
       ./core/audio.nix
       ./core/bluetooth.nix
       ./core/boot.nix
+      ./core/fonts.nix
       ./core/locale.nix
       ./core/networking.nix
       ./core/nix.nix
