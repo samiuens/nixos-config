@@ -1,5 +1,5 @@
 { pkgs, lib, hostConfig, ... }: {
-  #imports = [] ++ (lib.optional pkgs.stdenv.isDarwin ./macos-fix.nix);
+  imports = [] ++ (lib.optional hostConfig.os == "macos" ./macos-fix.nix);
 
   programs.firefox = {
     enable = true;
