@@ -7,6 +7,7 @@ in
     [
       # Flakes and machine-specific import
       inputs.home-manager.nixosModules.home-manager
+      #inputs.nixvim.homeModules.nixvim
       ../../hosts/${hostConfig.hostname}
 
       # Core

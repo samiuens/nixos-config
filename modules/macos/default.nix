@@ -8,6 +8,7 @@ in
       # Flakes and machine-specific import
       inputs.home-manager.darwinModules.home-manager
       inputs.nix-homebrew.darwinModules.nix-homebrew
+      #inputs.nixvim.homeModules.nixvim
       ../../hosts/${hostConfig.hostname}
 
       # Core

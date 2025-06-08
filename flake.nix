@@ -19,10 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
+    /*nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-    };    
+    };*/    
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -31,7 +31,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, nixvim, nix-darwin, nix-homebrew }: 
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, /*nixvim,*/ nix-darwin, nix-homebrew }: 
   let
     myConfig = import ./config.nix;
   
