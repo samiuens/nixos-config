@@ -43,6 +43,46 @@
         ssh = true;
       };
     };
+
+    "smi-mac" = {
+      # System information
+      hostname = "smi-mac";
+      platform = "aarch64-darwin";
+      os = "macos";
+      
+      # Personal user
+      user = {
+        name = "Sami Arda Ünsay";
+        username = "samiuensay";
+      };
+      # Work user
+      /*workUser = {
+        name = "Sami Arda Ünsay";
+        username = "samiarda";
+      };*/
+
+      # Applications
+      applications = {
+        aerospace = true;
+        firefox = true;
+        karabiner-elements = true;
+        kitty = true;
+        linearmouse = true;
+        onepassword = false;
+      };
+      # Services
+      services = {
+        syncthing = true;
+        tailscale = false;
+      };
+      # Configs
+      configs = {
+        shell = true;
+        git = false;
+        gpg = true;
+        ssh = true;
+      };
+    };
   };
 
   servers = {

@@ -44,15 +44,15 @@
         };
       modules = [ ./modules/nixos ];
     };
-  /*mkDarwin = hostname: platform:
+  mkDarwin = hostname: platform:
     nix-darwin.lib.darwinSystem {
       specialArgs = 
         {
-          inherit inputs config hostname platform;
-          username = "samiuensay";
+          inherit inputs myConfig;
+          hostConfig = myConfig.hosts."${configName}";
         };
-      modules = [ ./systems/darwin ];
-    };*/
+      modules = [ ./modules/darwin ];
+    };
   
   mkServer = configName:
     nixpkgs.lib.nixosSystem {
@@ -69,7 +69,7 @@
       "srv-prod-1" = mkServer  "srv-prod-1";
     };
     darwinConfigurations = {
-      # "smi-mac" = mkDarwin "smi-mac" "aarch64-darwin";
+      "smi-mac" = mkDarwin "smi-mac";
     };
   };
 }
