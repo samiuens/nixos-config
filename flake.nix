@@ -51,7 +51,7 @@
           inherit inputs myConfig;
           hostConfig = myConfig.hosts."${configName}";
         };
-      modules = [ ./modules/darwin ];
+      modules = [ ./modules/macos ];
     };
   
   mkServer = configName:
