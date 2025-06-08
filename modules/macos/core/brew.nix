@@ -1,4 +1,4 @@
-{ hostConfig, ... }: {
+{ hostConfig, pkgs, ... }: {
   environment.variables.HOMEBREW_NO_ANALYTICS = "1";
 
   homebrew = {
@@ -13,7 +13,7 @@
       "mas"
       "openssh"
     ];
-    casks = pkgs.callPackage ../../packages/${hostConfig.os}/casks.nix {};
+    casks = pkgs.callPackage ../../../packages/${hostConfig.os}/casks.nix {};
     masApps = {
       "Bitwarden" = 1352778147;
     };
