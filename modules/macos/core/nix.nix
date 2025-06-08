@@ -5,14 +5,8 @@
       experimental-features = nix-command flakes
     '';
     settings.trusted-users = [ "${hostConfig.user.username}" ];
-    optimise = {
-      automatic = true;
-      dates = [ "daily" ];
-    };
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 3d";
-    };
+    optimise.automatic = false;
+    gc.automatic = false;
   };
   nixpkgs = {
     config = {
