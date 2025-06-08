@@ -50,6 +50,7 @@
       # Host information
       hostname = "srv-prod-1";
       platform = "x86_64-linux";
+      os = "server";
 
       # User
       user = {
@@ -57,6 +58,8 @@
         username = "samiarda";
       };
 
+      applications = {};
+      services = {};
       configs = {
         shell = true;
         git = true;
