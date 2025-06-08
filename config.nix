@@ -19,6 +19,7 @@
       };
       # Work user
       workUser = {
+        enabled = true;
         name = "Sami Arda Ünsay";
         username = "samiarda";
       };
