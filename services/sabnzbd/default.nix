@@ -1,8 +1,8 @@
-{ vars, hostname, username, ... }:
+{ myConfig, hostConfig, ... }:
   let 
     name = "sabnzbd";
     image = "lscr.io/linuxserver/sabnzbd:latest";
-    domain = "sabnzbd.${hostname}.${vars.domain}";
+    domain = "sabnzbd.${hostConfig.hostname}.${myConfig.domain}";
     volumePath = "/srv/${name}";
   in {
   #imports = [ ../../utils/copy-file.nix ];
@@ -19,7 +19,7 @@
   virtualisation.oci-containers.containers."${name}" = {
     image = "${image}";
     environment = {
-      TZ = "${vars.server.timezone}";
+      TZ = "${myConfig.timezone}";
       PUID = "0";
       PGID = "0";
     };
@@ -34,6 +34,6 @@
       "traefik.http.routers.${name}.tls" = "true";
       "traefik.http.services.${name}.loadbalancer.server.port" = "8080";
     };
-    extraOptions = [ "--network=${hostname}" ];
+    extraOptions = [ "--network=${hostConfig.hostname}" ];
   };
 }

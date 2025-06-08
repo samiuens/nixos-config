@@ -1,8 +1,8 @@
-{ vars, hostname, username, ... }:
+{ myConfig, hostConfig, ... }:
   let 
     name = "jellyseerr";
     image = "fallenbagel/jellyseerr:latest";
-    domain = "jellyseerr.${hostname}.${vars.domain}";
+    domain = "jellyseerr.${hostConfig.hostname}.${myConfig.domain}";
     volumePath = "/srv/${name}";
   in {
   # Use Docker as the container backend
@@ -11,7 +11,7 @@
   virtualisation.oci-containers.containers."${name}" = {
     image = "${image}";
     environment = {
-      TZ = "${vars.server.timezone}";
+      TZ = "${myConfig.timezone}";
     };
     volumes = [
       "${volumePath}/config:/app/config"
@@ -23,6 +23,6 @@
       "traefik.http.routers.${name}.tls" = "true";
       "traefik.http.services.${name}.loadbalancer.server.port" = "5055";
     };
-    extraOptions = [ "--network=${hostname}" ];
+    extraOptions = [ "--network=${hostConfig.hostname}" ];
   };
 }

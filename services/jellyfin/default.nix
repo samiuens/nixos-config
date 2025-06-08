@@ -1,8 +1,8 @@
-{ vars, hostname, username, ... }:
+{ myConfig, hostConfig, ... }:
   let 
     name = "jellyfin";
     image = "jellyfin/jellyfin";
-    domain = "jellyfin.${hostname}.${vars.domain}";
+    domain = "jellyfin.${hostConfig.hostname}.${myConfig.domain}";
     volumePath = "/srv/${name}";
   in {
   # Use Docker as the container backend
@@ -27,6 +27,6 @@
       "traefik.http.routers.${name}.tls" = "true";
       "traefik.http.services.${name}.loadbalancer.server.port" = "8096";
     };
-    extraOptions = [ "--network=${hostname}" ];
+    extraOptions = [ "--network=${hostConfig.hostname}" ];
   };
 }

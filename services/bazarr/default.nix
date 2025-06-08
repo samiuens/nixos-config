@@ -1,8 +1,8 @@
-{ vars, hostname, username, ... }:
+{ myConfig, hostConfig, ... }:
   let 
     name = "bazarr";
     image = "lscr.io/linuxserver/bazarr:latest";
-    domain = "bazarr.${hostname}.${vars.domain}";
+    domain = "bazarr.${hostConfig.hostname}.${myConfig.domain}";
     volumePath = "/srv/${name}";
   in {
   # Use Docker as the container backend
@@ -11,7 +11,7 @@
   virtualisation.oci-containers.containers."${name}" = {
     image = "${image}";
     environment = {
-      TZ = "${vars.server.timezone}";
+      TZ = "${myConfig.timezone}";
       PUID = "0";
       PGID = "0";
     };
@@ -26,6 +26,6 @@
       "traefik.http.routers.${name}.tls" = "true";
       "traefik.http.services.${name}.loadbalancer.server.port" = "6767";
     };
-    extraOptions = [ "--network=${hostname}" ];
+    extraOptions = [ "--network=${hostConfig.hostname}" ];
   };
 }

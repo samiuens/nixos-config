@@ -1,8 +1,8 @@
-{ vars, hostname, username, ... }:
+{ myConfig, hostConfig, ... }:
   let 
     name = "sonarr";
     image = "lscr.io/linuxserver/sonarr:latest";
-    domain = "sonarr.${hostname}.${vars.domain}";
+    domain = "sonarr.${hostConfig.hostname}.${myConfig.domain}";
     volumePath = "/srv/${name}";
   in {
   # Use Docker as the container backend
@@ -11,7 +11,7 @@
   virtualisation.oci-containers.containers."${name}" = {
     image = "${image}";
     environment = {
-      TZ = "${vars.server.timezone}";
+      TZ = "${myConfig.timezone}";
       PUID = "0";
       PGID = "0";
     };
@@ -26,6 +26,6 @@
       "traefik.http.routers.${name}.tls" = "true";
       "traefik.http.services.${name}.loadbalancer.server.port" = "8989";
     };
-    extraOptions = [ "--network=${hostname}" ];
+    extraOptions = [ "--network=${hostConfig.hostname}" ];
   };
 }

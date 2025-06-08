@@ -1,8 +1,8 @@
-{ config, pkgs, vars, hostname, username, ... }: 
+{ myConfig, hostConfig, ... }: 
   let 
     name = "homepage";
     image = "ghcr.io/gethomepage/homepage:latest";
-    domain = "home.${vars.domain}";
+    domain = "home.${myConfig.domain}";
     volumePath = "/srv/${name}";
   in {
     # Use Docker as the container backend
@@ -25,6 +25,6 @@
         "traefik.http.routers.${name}.tls" = "true";
         "traefik.http.services.${name}.loadbalancer.server.port" = "3000";
       };
-      extraOptions = [ "--network=${hostname}" ];
+      extraOptions = [ "--network=${hostConfig.hostname}" ];
     };
   }

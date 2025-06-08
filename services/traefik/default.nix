@@ -1,8 +1,8 @@
-{ config, pkgs, vars, hostname, username, ... }: 
+{ config, myConfig, hostConfig, ... }:
   let 
     name = "traefik";
     image = "traefik:latest";
-    domain = "traefik.${hostname}.${vars.domain}";
+    domain = "traefik.${hostConfig.hostname}.${myConfig.domain}";
     volumePath = "/srv/${name}";
   in {
     # Allow DNS (53), HTTP (80) and HTTPS (443)
@@ -40,10 +40,10 @@
         #"traefik.http.routers.traefik-secure.middlewares" = "traefik-auth";
         "traefik.http.routers.traefik-secure.tls" = "true";
         "traefik.http.routers.traefik-secure.tls.certresolver" = "cloudflare";
-        "traefik.http.routers.traefik-secure.tls.domains[0].main" = "${hostname}.${vars.domain}";
-        "traefik.http.routers.traefik-secure.tls.domains[0].sans" = "*.${hostname}.${vars.domain}";
+        "traefik.http.routers.traefik-secure.tls.domains[0].main" = "${hostConfig.hostname}.${myConfig.domain}";
+        "traefik.http.routers.traefik-secure.tls.domains[0].sans" = "*.${hostConfig.hostname}.${myConfig.domain}";
         "traefik.http.routers.traefik-secure.service" = "api@internal";
       };
-      extraOptions = [ "--network=${hostname}" ];
+      extraOptions = [ "--network=${hostConfig.hostname}" ];
     };
   }
