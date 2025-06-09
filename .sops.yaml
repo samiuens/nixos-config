@@ -8,14 +8,14 @@ keys:
     # nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
     - &srv-prod-1 age103zyxp0qku4dyqslmgx370jv8yttc6wzhfhlfyd3mq7369cgje6stplz5u
 creation_rules:
-  - path_regex: secrets/public/shared.ya?ml$
+  - path_regex: secrets/creds/shared.ya?ml$
     key_groups:
       - age:
           - *srv-prod-1
         pgp:
           - *keychain
           - *backup
-  - path_regex: secrets/public/srv-prod-1.ya?ml$
+  - path_regex: secrets/creds/srv-prod-1.ya?ml$
     key_groups:
       - age:
           - *srv-prod-1
