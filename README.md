@@ -12,7 +12,7 @@ This repo contains the Nix configurations for my desktop, macbook pro (m1) and m
 - 🤫 [sops-nix](https://github.com/Mic92/sops-nix) for encrypted secret management
 - ⚡️ `justfile` contains useful aliases for many frequent and complicated commands
 - ♻️ Automatic trash collection managed through `nix-gc`
-- 🔑 Secure boot configuration *(coming soon...)*
+- 🔑 Full Disk Encryption (LUKS) with Secure Boot
 - 🔒 Automatic Certifcate registration and renewal by `traefik`
 - 🧩 Tailscale, Jellyfin, Netdata, among other self-hosted applications
 - 🖼️ Configuration of the desired desktop environment on nixOS
