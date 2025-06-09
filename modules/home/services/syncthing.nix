@@ -25,12 +25,22 @@
           id = "obsidian-vault";
           label = "Sami Arda's Vault";
           path = "~/Sync/Sami Arda's Vault";
+          versioning = {
+            type = "simple";
+            params.cleanoutDays = "5";
+            params.keep = "3";
+          };
           devices = [ "smi-nixos" "smi-mac" "smi-phone" ];
         };
         "secure-enclave" = {
           id = "secure-enclave";
           label = "secure-enclave";
           path = "~/Sync/secure-enclave";
+          versioning = {
+            type = "simple";
+            params.cleanoutDays = "7";
+            params.keep = "7";
+          };
           devices = [ "smi-nixos" "smi-mac" ];
         };
       };
