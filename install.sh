@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+input() {
+  prompt=$1
+  input=""
+  read -p "$prompt" input
+  echo "$input"
+}
+
 if [ "$(uname)" == "Darwin" ]; then
   echo "> macos detected..."
   echo "this script will prepare the system for nix-darwin installation."
@@ -34,12 +41,31 @@ if [ "$(uname)" == "Darwin" ]; then
 
 elif [ "$(uname)" == "Linux" ]; then
   echo "> linux detected..."
+  echo ""
 
-  echo "generating secure boot keys..."
+  echo "> setting up folder structure..."
+  git clone https://github.com/samiuens/nixos-config.git ~/nixos-config
+  cd ~/nixos-config
+  echo "cloned repo into home directory (under ~/nixos-conig)"
+
+  hostname=$(input "> please provide the hostname, corresponding to the config you want to apply: ")
+
+  echo "> reading nix configuration..."
+  if [ ! -d "./hosts/$hostname" ]; then
+    echo "no configuration found for $hostname in this repo."
+    exit 1
+  fi
+  echo "read nix configuration."
+
+  echo "> generating hardware config..."
+  sudo rm -r ./hosts/$hostname/hardware-configuration.nix
+  sudo nixos-generate-config --dir ./hosts/$hostname
+  echo "generated hardware configuration and copied into repo."
+
+  echo "> generating secure boot keys..."
   sudo nix-shell -p sbctl --command "sbctl create-keys" 
   echo ""
+  echo "generated secure boot keys."
   
-  echo "run the following command to activate the nix configuration:"
-  echo "sudo nixos-rebuild switch --flake .#"
-  echo "enter the hostname corresponding to the config you want to apply."
+  sudo nixos-rebuild switch --flake ".#$hostname"
 fi
