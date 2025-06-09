@@ -34,7 +34,7 @@
   [
     {
       device = "/swapfile";
-      size = 8 * 1024; # 8B
+      size = 8 * 1024; # 8GB
     }
    ];
 
