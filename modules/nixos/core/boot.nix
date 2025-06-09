@@ -1,5 +1,6 @@
-{ lib, ... }: {
+{ pkgs, lib, ... }: {
   boot = {
+    initrd.systemd.enable = true;
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = lib.mkForce false;
@@ -9,4 +10,7 @@
       pkiBundle = "/var/lib/sbctl";
     };
   };
+  environment.systemPackages = [
+    pkgs.tpm2-tss
+  ];
 }
