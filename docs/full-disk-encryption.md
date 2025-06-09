@@ -132,11 +132,11 @@ swapDevices =
     }
   ];
 ```
+Don't forgot to rebuild your configuration and switch to it, with: `sudo nixos-rebuild switch --flake ".#"`
 
 ## Recommended size for the swap file
 ![Screenshot of a table showing the recommended size of the swap partition/file.](/.github/assets/swap-size.png)
 
 ### Sources
-
-[^1]: https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md
-[^2]: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/getting-started-with-swap_managing-storage-devices
+1. https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md
+2. https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/getting-started-with-swap_managing-storage-devices
