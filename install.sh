@@ -34,4 +34,12 @@ if [ "$(uname)" == "Darwin" ]; then
 
 elif [ "$(uname)" == "Linux" ]; then
   echo "> linux detected..."
+
+  echo "generating secure boot keys..."
+  sudo nix-shell -p sbctl --command "sbctl create-keys" 
+  echo ""
+  
+  echo "run the following command to activate the nix configuration:"
+  echo "sudo nixos-rebuild switch --flake .#"
+  echo "enter the hostname corresponding to the config you want to apply."
 fi

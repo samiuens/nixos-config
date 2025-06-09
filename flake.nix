@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +36,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nixpkgs, disko, home-manager, sops-nix, /*nixvim,*/ nix-darwin, nix-homebrew }: 
+  outputs = inputs@{ self, nixpkgs, lanzaboote, disko, home-manager, sops-nix, /*nixvim,*/ nix-darwin, nix-homebrew }: 
   let
     myConfig = import ./config.nix;
   
