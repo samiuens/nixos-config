@@ -1,6 +1,6 @@
 { lib, inputs, myConfig, hostConfig, ... }:
 let
-  moduleConfig = import ../../lib/loadHostConfigModules.nix { inherit lib; };
+  serverConfig = import ../../lib/loadServerConfigServices.nix { inherit lib; };
 in
 {
   imports =
@@ -25,5 +25,5 @@ in
       ./services/sops.nix
       ./services/ssh.nix
     ]
-    ++ (moduleConfig.loadHostConfigModules hostConfig.services ../../services);
+    ++ (serverConfig.loadServerConfigServices hostConfig.services ../../services);
 }

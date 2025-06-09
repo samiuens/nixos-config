@@ -5,9 +5,9 @@ in
 {
   imports =
     []
-    ++ (moduleConfig.loadHostConfigModules hostConfig.applications ./applications)
-    ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services)
-    ++ (moduleConfig.loadHostConfigModules hostConfig.configs ./configs)
+    ++ (moduleConfig.loadHostConfigModules hostConfig.applications ./applications "personal")
+    ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services "personal")
+    ++ (moduleConfig.loadHostConfigModules hostConfig.configs ./configs "personal")
     ++ (lib.optional (hostConfig.os == "nixos") ./desktop/${hostConfig.desktopEnvironment});
 
 

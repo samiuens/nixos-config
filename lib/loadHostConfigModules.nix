@@ -1,5 +1,5 @@
 { lib, ... }: {
-  loadHostConfigModules = hostConfig: folderPath:
+  loadHostConfigModules = hostConfig: folderPath: configType:
     let
       folderContents = builtins.readDir folderPath;
       contentNames = builtins.attrNames folderContents;
@@ -17,42 +17,37 @@
           acc
       ) [] contentNames;
 
-      foundModuleNames = builtins.map (path:
-        let
-          baseName = builtins.baseNameOf path;
-          isPathToNixFile = lib.hasSuffix ".nix" baseName;
-        in
-        if isPathToNixFile then
-          lib.removeSuffix ".nix" baseName
-        else
-          baseName
-      ) allModulePaths;
+      getModulesForType = configType:
+        builtins.mapAttrs (appName: appConfig:
+          if builtins.isAttrs appConfig && builtins.hasAttr configType appConfig then
+            let
+              isEnabled = builtins.getAttr configType appConfig;
+            in
+            if isEnabled == true then
+              let
+                matchingPaths = builtins.filter
+                  (path:
+                    let
+                      baseName = builtins.baseNameOf path;
+                      nameWithoutSuffix = if lib.hasSuffix ".nix" baseName then lib.removeSuffix ".nix" baseName else baseName;
+                    in
+                    nameWithoutSuffix == appName
+                  )
+                  allModulePaths;
 
-      checkedModuleImports = builtins.mapAttrs (moduleName: isEnabled:
-        if isEnabled then
-          let
-            matchingPaths = builtins.filter
-              (path:
-                let
-                  baseName = builtins.baseNameOf path;
-                  nameWithoutSuffix = if lib.hasSuffix ".nix" baseName then lib.removeSuffix ".nix" baseName else baseName;
-                in
-                nameWithoutSuffix == moduleName
-              )
-              allModulePaths;
-
-            modulePath = if matchingPaths != [] then builtins.head matchingPaths else null;
-          in
-          if modulePath != null then
-            import modulePath
+                modulePath = if matchingPaths != [] then builtins.head matchingPaths else null;
+              in
+              if modulePath != null then
+                import modulePath
+              else
+                {}
+            else
+              {}
           else
-            #lib.warn "WARN: The module '${moduleName}' is activated in the config, but the file or folder '${folderPath}/${moduleName}' (or '${folderPath}/${moduleName}.nix') doesnt exist!" {}
             {}
-        else
-          {}
-      ) hostConfig;
+        ) hostConfig;
 
-      activeModuleImports = builtins.filter (moduleModule: moduleModule != { }) (builtins.attrValues checkedModuleImports);
+      activeModuleImports = builtins.filter (moduleModule: moduleModule != { }) (builtins.attrValues (getModulesForType configType));
     in
     activeModuleImports;
 }

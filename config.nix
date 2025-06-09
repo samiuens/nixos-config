@@ -26,22 +26,52 @@
 
       # Applications
       applications = {
-        coolercontrol = true;
-        firefox = true;
-        kitty = true;
-        onepassword = true;
+        coolercontrol = {
+          personal = true;
+          work = true;
+        };
+        firefox = {
+          personal = true;
+          work = false;
+        };
+        kitty = {
+          personal = true;
+          work = true;
+        };
+        onepassword = {
+          personal = true;
+          work = false;
+        };
       };
       # Services
       services = {
-        syncthing = true;
-        tailscale = true;
+        syncthing = {
+          personal = true;
+          work = false;
+        };
+        tailscale = {
+          personal = true;
+          work = true;
+        };
       };
       # Configs
       configs = {
-        shell = true;
-        git = true;
-        gpg = true;
-        ssh = true;
+        shell = {
+          personal = true;
+          work = true;
+        };
+        git = {
+          personal = true;
+          work = false;
+        };
+        gpg = {
+          personal = true;
+          work = false;
+        };
+        ssh = {
+          personal = true;
+          work = false;
+        };
       };
     };
 
@@ -65,24 +95,60 @@
 
       # Applications
       applications = {
-        aerospace = true;
-        firefox = true;
-        karabiner-elements = true;
-        kitty = true;
-        linearmouse = true;
-        onepassword = false;
+        aerospace = {
+          personal = true;
+          work = true;
+        };
+        firefox = {
+          personal = true;
+          work = false;
+        };
+        karabiner-elements = {
+          personal = true;
+          work = true;
+        };
+        kitty = {
+          personal = true;
+          work = true;
+        };
+        linearmouse = {
+          personal = true;
+          work = true;
+        };
+        onepassword = {
+          personal = false;
+          work = false;
+        };
       };
       # Services
       services = {
-        syncthing = true;
-        tailscale = false;
+        syncthing = {
+          personal = true;
+          work = false;
+        };
+        tailscale = {
+          personal = true;
+          work = true;
+        };
       };
       # Configs
       configs = {
-        shell = true;
-        git = false;
-        gpg = true;
-        ssh = true;
+        shell = {
+          personal = true;
+          work = true;
+        };
+        git = {
+          personal = true;
+          work = false;
+        };
+        gpg = {
+          personal = true;
+          work = false;
+        };
+        ssh = {
+          personal = true;
+          work = false;
+        };
       };
     };
   };

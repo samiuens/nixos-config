@@ -34,6 +34,8 @@ in
         else throw "unknown desktop environment (${hostConfig.hostname}): ${hostConfig.desktopEnvironment}"
       )
     ]
-    ++ (moduleConfig.loadHostConfigModules hostConfig.applications ./applications)
-    ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services);
+    ++ (moduleConfig.loadHostConfigModules hostConfig.applications ./applications "personal")
+    ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services "personal")
+    ++ (moduleConfig.loadHostConfigModules hostConfig.applications ./applications "work")
+    ++ (moduleConfig.loadHostConfigModules hostConfig.services ./services "work");
 }
