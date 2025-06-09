@@ -21,11 +21,11 @@ gc:
 
 # Edit sops secrets for host
 secrets host:
-  sops ./secrets/public/{{host}}.yaml
+  sops ./secrets/creds/{{host}}.yaml
 
 # Update keys for sops secret
 updatekeys:
-  for file in secrets/public/*.yaml; do sops updatekeys "$file"; done
+  for file in secrets/creds/*.yaml; do sops updatekeys "$file"; done
 
 # Switch to directory
 cd:
