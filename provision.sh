@@ -1,8 +1,8 @@
 input() {
-    prompt=$1
-    input=""
-    read -p "$prompt" input
-    echo "$input"
+  prompt=$1
+  input=""
+  read -p "$prompt" input
+  echo "$input"
 }
 
 provision()
@@ -20,7 +20,7 @@ provision()
   fi
 
   echo "> reading nix configuration..."
-  if [ ! -d "./machines/$hostname" ]; then
+  if [ ! -d "./hosts/$hostname" ]; then
     echo "no configuration found for $hostname."
     exit 1
   fi
