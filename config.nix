@@ -53,6 +53,10 @@
           personal = true;
           work = true;
         };
+        docker = {
+          personal = true;
+          work = true;
+        }
       };
       # Configs
       configs = {
