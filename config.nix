@@ -56,7 +56,7 @@
         docker = {
           personal = true;
           work = true;
-        }
+        };
       };
       # Configs
       configs = {
