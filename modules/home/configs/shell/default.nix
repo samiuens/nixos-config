@@ -30,12 +30,18 @@
       settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./theme.json));
     };
 
-    # Eza for better ls command
+    # Eza, as a better ls command
     eza = {
       enable = true;
       enableZshIntegration = true;
       icons = "auto";
       colors = "auto";
+    };
+
+    # Zoxide, as a better cd command
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
     };
   };
 }
