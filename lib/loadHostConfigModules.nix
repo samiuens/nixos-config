@@ -23,7 +23,7 @@
             let
               isEnabled = builtins.getAttr configType appConfig;
             in
-            if isEnabled == true then
+            if isEnabled then
               let
                 matchingPaths = builtins.filter
                   (path:
