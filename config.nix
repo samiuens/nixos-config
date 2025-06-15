@@ -57,6 +57,10 @@
           personal = true;
           work = true;
         };
+        podman = {
+          personal = false;
+          work = true;
+        };
       };
       # Configs
       configs = {
@@ -131,6 +135,10 @@
           work = false;
         };
         tailscale = {
+          personal = true;
+          work = true;
+        };
+        docker = {
           personal = true;
           work = true;
         };
