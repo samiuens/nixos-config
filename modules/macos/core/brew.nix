@@ -12,6 +12,7 @@
     brews = [
       "mas"
       "openssh"
+      "podman"
     ];
     casks = pkgs.callPackage ../../../packages/${hostConfig.os}/casks.nix {};
     masApps = {
